@@ -2,80 +2,74 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:math' show Random;
+library ng_dart_codelab.piratebadge;
+
 import 'dart:async' show Future;
-
+import 'dart:math' show Random;
 import 'package:angular/angular.dart';
-
 import 'badge/badge_component.dart';
 
 @MirrorsUsed(override:'*')
 import 'dart:mirrors';
 
 class PirateName {
-  static final Random indexGen = new Random();
+  String firstName, appellation;
 
-  static List names = [];
-  static List appellations = [];
+  PirateName(this.firstName, this.appellation);
 
-  String _firstName;
-  String _appellation;
-
-  PirateName({String firstName, String appellation}) {
-
-    if (firstName == null) {
-      _firstName = names.isEmpty ? '' : names[indexGen.nextInt(names.length)];
-    } else {
-      _firstName = firstName;
-    }
-    if (appellation == null) {
-      _appellation = appellations.isEmpty ? '' : appellations[indexGen.nextInt(appellations.length)];
-    } else {
-      _appellation = appellation;
-    }
-  }
-
-  String toString() => pirateName;
-
-  String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
+  String get pirateName => firstName.isEmpty ? '' :
+    '$firstName the $appellation';
 }
 
 @NgController(
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
-  PirateName _name = new PirateName(firstName: '');
-
   final Http _http;
 
-  bool datasLoaded = false;
+  bool dataLoaded = false;
 
   BadgesController(this._http) {
     _loadData().then((_) {
-      datasLoaded = true;
+      dataLoaded = true;
     }, onError: (_) {
-      datasLoaded = false;
+      dataLoaded = false;
     });
   }
 
-  set name(String value) {
-    _name = new PirateName(firstName: value);
-  }
-
-  String get name => _name._firstName;
-  String get pirateName => _name.pirateName;
-  bool get inputIsNotEmpty => !name.trim().isEmpty;
-  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" : "Aye! Gimme a name!";
-
-  generateName() {
-    _name = new PirateName();
-  }
+  static List names = [];
+  static List appellations = [];
 
   Future _loadData() {
     return _http.get('piratenames.json').then((HttpResponse response) {
-      PirateName.names = response.data['names'];
-      PirateName.appellations = response.data['appellations'];
+      names = response.data['names'];
+      appellations = response.data['appellations'];
     });
+  }
+
+  PirateName pn;
+
+  String _name = '';
+
+  get name => _name;
+
+  set name(newName) {
+    _name = newName;
+    pn = new PirateName(name,
+        appellations[new Random().nextInt(appellations.length)]);
+  }
+
+  bool get inputIsNotEmpty => name.trim().isNotEmpty;
+
+  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" :
+    "Aye! Gimme a name!";
+
+  generateName() {
+    var rand = new Random();
+    var randomName = names[rand.nextInt(names.length)];
+    name = randomName;
+    pn = new PirateName(randomName,
+        appellations[new Random().nextInt(appellations.length)]);
   }
 }
 
@@ -84,4 +78,3 @@ void main() {
     ..type(BadgesController)
     ..type(BadgeComponent));
 }
-
