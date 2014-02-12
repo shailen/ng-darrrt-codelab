@@ -1,7 +1,19 @@
 Code Lab: AngularDart
 =================
 
-Build a web app with AngularDart in one hour.
+AngularDart is the Dart version of Angular,
+a client-side structural framework for creating dynamic web applications.
+With Angular, you can concentrate on your application’s logic, and not on DOM manipulation.
+Use HTML as the template language, extending HTML with custom elements and attributes
+to accommodate the needs of your application.
+
+In this one-hour code lab, you'll create an AngularDart web app
+that generates a pirate badge.
+(If you've already completed the [first Dart code lab](https://www.dartlang.org/codelabs/darrrt/),
+this app should be familiar, but the code is completely different.)
+
+<!-- put screenshot here? -->
+
 
 ### Prerequisites
 
@@ -48,6 +60,8 @@ out our [anonymous feedback form][feedback].
 - [+Nicolas Fran\cois](https://plus.google.com/+NicolasFrancois), Dart Evangelist [@Sfeir](http://www.sfeir.com/)
 
 _Thanks to the [+DartlangFr](http://gplus.to/dartlangfr) team._  
+
+## [Next >](docs/step-1.md)
 
   [1]: https://www.dartlang.org/
   [2]: https://www.dartlang.org/docs/dart-up-and-running/contents/ch02.html
