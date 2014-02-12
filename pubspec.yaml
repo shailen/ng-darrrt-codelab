@@ -1,5 +1,5 @@
 name: ng_darrrt_codelab
 description: A one hour excercice, based on the Darrrt project, to learn AngularDart.
 dependencies:
-  angular: any
+  angular: 0.9.5
   browser: any
