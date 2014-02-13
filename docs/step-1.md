@@ -117,4 +117,4 @@ Dart Editor launches _Dartium_, a special build of Chromium that has the Dart Vi
 The `piratebadge.html` file loads the app and calls the `main()` function.  
 You should see a TO DO comment on the left and a red and white name badge on the right.
 
-## [Home](../README.md) | [Next >](step-2.md)
+## [Home](../README.md) | [< Previous](step-0.md) | [Next >](step-2.md)
