@@ -1,5 +1,6 @@
-## 8. Capitalize the name on the badge.
-> **Goal**: Using a filter to modify the datas provided.
+## Step 8: Use a filter to capitalize text
+
+> **Goal**: Using a filter to modify the provided data.
 
 _**Keywords**: filter_
 
