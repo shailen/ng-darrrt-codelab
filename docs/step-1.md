@@ -1,6 +1,7 @@
 ## Step 1: Run the app, and view its code
 
-In this step, you open the source files, familiarize yourself with the Dart and HTML code, and run the app.
+In this step, you open the app's source files, familiarize yourself with its code,
+and run the app.
 
 _**Keywords**: main, pub, Dartium, Angular_
 
@@ -30,6 +31,8 @@ for the skeleton version of the app.
 
 #### pubspec.yaml
   
+To see the raw source for this file,
+click the **Source** tab at the bottom of the edit view.
 The `pubspec.yaml` file in the project root gives information
 about this app and the packages it depends on.
 In particular, the dependency on **angular** gives the Dart tools
