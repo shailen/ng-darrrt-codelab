@@ -12,7 +12,7 @@ Unzip the ZIP file, which creates a directory called dart.
 (For more options, go to the
 [download page](https://www.dartlang.org/tools/download.html).)
 
-[DOWNLOAD DART + EDITOR](http://www.dartlang.org)
+> **<a href="http://www.dartlang.org" target="_blank">Download Dart + Editor</a>**
 
 
 ### Start the editor.
