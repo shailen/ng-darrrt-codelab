@@ -1,4 +1,4 @@
-## 6. Read names from JSON-encoded file
+## Step 6: Read names from JSON-encoded file
 > **Goal**: In this step, you change the `PirateName` and the `BadgesController` classes to get the list of names and appellations from a JSON file. This gives you a chance to add more names and appellations to the program.
 
 _**Keywords**: HTTP Request, Dependency Injection_
