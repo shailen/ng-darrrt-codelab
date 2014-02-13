@@ -1,4 +1,4 @@
-## 5. Use a class as model
+## Step 5: Use a class as model
 > **Goal**: As a developper, I want to use a class object as model
 
 _**Keywords**: class_
