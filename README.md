@@ -54,6 +54,11 @@ out our [anonymous feedback form][feedback].
 
 ### Credits
 
+This code lab is based on the Dart code lab
+[Avast, Ye Pirates: Write a Web App](https://www.dartlang.org/codelabs/darrrt/).
+
+The creators of the AngularDart code lab include:
+
 - [+Alexandre Ardhuin](https://plus.google.com/101145059477513456972)
 - [+Guillaume Girou](https://plus.google.com/+GuillaumeGirou), Dart Evangelist [@Sfeir](http://www.sfeir.com/)
 - [+Mathieu Breton](https://twitter.com/MatBreton), [@Xebia](http://www.xebia.fr)
