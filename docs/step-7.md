@@ -1,4 +1,4 @@
-## Step 7: Use a service
+## Step 7: Use a service to get data
 
 **NOTE: This page needs to be completely rewritten, as the example has completely changed.
 Instead of creating a directive, this example converts Step 6's example to use a service
