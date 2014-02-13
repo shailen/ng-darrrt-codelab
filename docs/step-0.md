@@ -35,7 +35,7 @@ which creates a directory called `ng-darrrt-codelab-master`.
 In Dart Editor, use **File > Open Existing Folder...**
 to open the `ng-darrrt-codelab-master` directory.
 
-**{PENDING: screenshot showing the files and directories in the piratebadge directory}**
+<!-- PENDING: screenshot showing the files and directories in the piratebadge directory -->
 
 **Note:**
 If you see <span style="color:red">red X’s</span>
