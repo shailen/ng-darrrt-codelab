@@ -109,7 +109,7 @@ Key information:
 
 ### Run the app.
 
-To run the app in Dart Editor, select `piratebadge.html` and click the Run button ![Run button](img/run.png).
+To run the app in Dart Editor, right-click `piratebadge.html` and select **Run in Dartium**.
 
 ![Click the run button](img/clickrun.png).
 
