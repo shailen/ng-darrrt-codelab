@@ -1,4 +1,4 @@
-## Step 3: Add a generate name button
+## Step 3: Add a button
 > **Goal**: As a user I want to put the name 'Anne Bonney' when I click on a generate button.
 
 _**Keywords**: controller, module, click event_
