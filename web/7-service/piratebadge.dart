@@ -24,9 +24,7 @@ class PirateName {
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
-  NamesService ns; // Added.
-
-  bool dataLoaded = false;
+  NamesService ns;
 
   BadgesController(this.ns);
 

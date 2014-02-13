@@ -13,20 +13,20 @@
   </head>
   <body badges ng-cloak>
     <h1>Pirate badge</h1>
-    
+
     <div class="widgets">
       <div>
         <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name">
       </div>
       <div>
-        <button ng-click="ctrl.generateName()" 
-          ng-disabled="ctrl.inputIsNotEmpty">{{ctrl.label}}</button>
+        <button ng-click="ctrl.generateName()"
+            ng-disabled="ctrl.inputIsNotEmpty">{{ctrl.label}}</button>
       </div>
     </div>
-    
-    <badge name="{{ctrl.pn.pirateName}}" 
+
+    <badge name="{{ctrl.pn.pirateName}}"
         style='float: left; margin-left: 20px;'></badge>
-    
+
     <script src="packages/shadow_dom/shadow_dom.min.js"></script>
     <script type="application/dart" src="piratebadge.dart"></script>
     <script src="packages/browser/dart.js"></script>

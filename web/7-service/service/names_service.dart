@@ -6,7 +6,7 @@ import 'dart:math';
 
 @NgInjectableService()
 class NamesService {
-  static final Random indexGen = new Random();
+  static final Random rand = new Random();
   final Http _http;
   List<String> names;
   List<String> appellations;
@@ -29,5 +29,5 @@ class NamesService {
     return _load().then((_) => _oneRandom(appellations));
   }
 
-  String _oneRandom(List<String> list) => list[indexGen.nextInt(list.length)];
+  String _oneRandom(List<String> list) => list[rand.nextInt(list.length)];
 }

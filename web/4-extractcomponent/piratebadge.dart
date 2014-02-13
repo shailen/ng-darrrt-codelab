@@ -8,6 +8,18 @@ import 'badge/badge_component.dart';
 @MirrorsUsed(override:'*')
 import 'dart:mirrors';
 
+
+
+
+
+
+
+
+
+
+
+
+
 @NgController(
     selector: '[badges]',
     publishAs: 'ctrl')
@@ -15,7 +27,8 @@ class BadgesController {
   String name = '';
 
   bool get inputIsNotEmpty => !name.trim().isEmpty;
-  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" : "Aye! Gimme a name!";
+  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" :
+      "Aye! Gimme a name!";
 
   generateName() {
     name = 'Anne Bonney';

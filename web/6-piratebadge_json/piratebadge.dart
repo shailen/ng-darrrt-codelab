@@ -37,8 +37,8 @@ class BadgesController {
     });
   }
 
-  static List names = [];
-  static List appellations = [];
+  static List<String> names = [];
+  static List<String> appellations = [];
 
   Future _loadData() {
     return _http.get('piratenames.json').then((HttpResponse response) {
