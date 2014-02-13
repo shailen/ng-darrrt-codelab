@@ -15,18 +15,11 @@ this app should be familiar, but the code is completely different.)
 <!-- put screenshot here? -->
 
 
-### Prerequisites
-
-Before you begin this code lab:
-
-* [Download Dart Editor][1] if you don't already have it.
-* [Download our sample code.](https://github.com/shailen/ng-darrrt-codelab/archive/master.zip)
-  Unzip the ZIP file, which creates a directory called `ng-darrrt-codelab-master`.
-
 ### Steps
 
 This code lab has the following sections:
 
+* [Step 0: Set up](docs/step-0.md)
 * [Step 1: Run the app, and view its code](docs/step-1.md)
 * [Step 2: Add an input field](docs/step-2.md)
 * [Step 3: Add a button](docs/step-3.md)
@@ -65,7 +58,7 @@ The creators of the AngularDart code lab include:
 
 _Thanks to the [+DartlangFr](http://gplus.to/dartlangfr) team._  
 
-## [Next >](docs/step-1.md)
+## [Next >](docs/step-0.md)
 
   [1]: https://www.dartlang.org/
   [2]: https://www.dartlang.org/docs/dart-up-and-running/contents/ch02.html

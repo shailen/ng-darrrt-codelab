@@ -3,9 +3,11 @@
 
 _**Keywords**: component, ShadowDOM_
 
-1. Create a `badge` folder in your work directory that will host all our compenent files.
-2. Create a file `badge/badge_component.html` and move the HTML corresponding to the badge in this new file:
-  
+1. Create a `badge` folder in your work directory that will host all our
+compenent files.
+2. Create a file `badge/badge_component.html` and move the HTML corresponding
+to the badge in this new file:
+
     ```HTML
     <div class="badge">
       <div class="greeting">
@@ -17,7 +19,8 @@ _**Keywords**: component, ShadowDOM_
     </div>
     ```
 
-3. Create a file `badge/badge_component.css` that will contain the styles for the badge component:
+3. Create a file `badge/badge_component.css` that will contain the styles for
+the badge component:
 
     ```CSS
     .badge {
@@ -51,9 +54,9 @@ _**Keywords**: component, ShadowDOM_
 
     ```Dart
     library badge;
-    
+
     import 'package:angular/angular.dart';
-    
+
     @NgComponent(
         selector: 'badge',
         templateUrl: 'badge/badge_component.html',
@@ -66,9 +69,12 @@ _**Keywords**: component, ShadowDOM_
     }
     ```
  >#### `templateUrl` and `cssUrl`
- >Since Components are self contained, they need to know what HTML template and CSS to use for their view. Components do not use the HTML of your app. They have their own.
+ >Since Components are self contained, they need to know what HTML template and
+ CSS to use for their view. Components do not use the HTML of your app. They
+ have their own.
  >#### `map`
- >The `name` field of the class is marked with `@NgAttr`, which specifies that the field is to be mapped to DOM attribute.
+ >The `name` field of the class is marked with `@NgAttr`, which specifies that
+ the field is to be mapped to DOM attribute.
 5. In `piratebadge.html` replace the HTML code of badge with the new `<badge>`:
 
     ```HTML
