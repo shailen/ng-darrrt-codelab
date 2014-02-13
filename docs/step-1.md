@@ -1,4 +1,4 @@
-## Step 1: Run the skeleton app, and view its code
+## Step 1: Run the app, and view its code
 
 In this step, you open the source files, familiarize yourself with the Dart and HTML code, and run the app.
 
