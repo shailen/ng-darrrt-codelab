@@ -19,6 +19,7 @@ this app should be familiar, but the code is completely different.)
 
 This code lab has the following sections:
 
+* [Step 0: Set up](docs/step-0.md)
 * [Step 1: Run the app, and view its code](docs/step-1.md)
 * [Step 2: Add an input field](docs/step-2.md)
 * [Step 3: Add a button](docs/step-3.md)
