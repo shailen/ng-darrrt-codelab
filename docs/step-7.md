@@ -1,4 +1,9 @@
-## 7. Create a directive.
+## Step 7: Use a service
+
+**NOTE: This page needs to be completely rewritten, as the example has completely changed.
+Instead of creating a directive, this example converts Step 6's example to use a service
+(NamesService) to load and provide names.**
+
 > **Goal**: As a developer, I want to change badge css style when the user drag his mouse over on it .
 
 _**Keywords**: directive_
