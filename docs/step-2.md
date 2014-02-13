@@ -1,5 +1,7 @@
-## 2. Set the text in badge with the input text.
-> **Goal**: As a user I can modify the text of the badge with the input field.
+## Step 2: Add an input field
+
+In this step, you add an input field
+that updates the text of the badge.
 
 _**Keywords**: binding, scope, model_
 
@@ -14,19 +16,19 @@ _**Keywords**: binding, scope, model_
     <html ng-app>
     ```
 
-	>The `ng-app` Directive can be placed on any element, and tells Angular which element is the root element of the application. Anything inside of this element is part of the page template managed by Angular. Unless you have a reason for Angular to manage only part of the app, it is recommended to put the `ng-app` Directive on the HTML element because it is the outermost tag.
+  >The `ng-app` Directive can be placed on any element, and tells Angular which element is the root element of the application. Anything inside of this element is part of the page template managed by Angular. Unless you have a reason for Angular to manage only part of the app, it is recommended to put the `ng-app` Directive on the HTML element because it is the outermost tag.
 
 2. Open `web/1-blankbadge/piratebadge.dart`. Add `ngBootstrap()` and the import statements :
 
     ```Dart
-	import 'package:angular/angular.dart';
+  import 'package:angular/angular.dart';
 
     @MirrorsUsed(override: '*')
     import 'dart:mirrors';
-	
-	void main() {
-	  ngBootstrap();
-	}
+  
+  void main() {
+    ngBootstrap();
+  }
     ```
     
     An `import` pulls in a Dart library. You also have to add an import
