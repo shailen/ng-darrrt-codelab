@@ -20,7 +20,7 @@ this app should be familiar, but the code is completely different.)
 Before you begin this code lab:
 
 * [Download Dart Editor][1] if you don't already have it.
-* [Download our sample code.](https://github.com/dartlangfr/ng-darrrt-codelab/archive/master.zip)
+* [Download our sample code.](https://github.com/shailen/ng-darrrt-codelab/archive/master.zip)
   Unzip the ZIP file, which creates a directory called `ng-darrrt-codelab-master`.
 
 ### Steps
