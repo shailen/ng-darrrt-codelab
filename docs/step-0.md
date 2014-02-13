@@ -8,11 +8,10 @@ In this step, you download Dart and get the sample code.
 If you haven’t already done so, get the Dart download
 by clicking the big **Download Dart + Editor**
 button on the Dart homepage.
-Unzip the ZIP file, which creates a directory called dart.
-(For more options, go to the
-[download page](https://www.dartlang.org/tools/download.html).)
 
 > **<a href="http://www.dartlang.org" target="_blank">Download Dart + Editor</a>**
+
+Unzip the ZIP file, which creates a directory called `dart`.
 
 
 ### Start the editor.
@@ -25,7 +24,7 @@ Go to the `dart` directory and double-click **DartEditor**.
 
 ###  Get the sample code.
 
-[Download >the sample code.](https://github.com/shailen/ng-darrrt-codelab/archive/master.zip)
+[Download the sample code.](https://github.com/shailen/ng-darrrt-codelab/archive/master.zip)
 
 Unzip the ZIP file,
 which creates a directory called `ng-darrrt-codelab-master`.
@@ -38,9 +37,9 @@ to open the `ng-darrrt-codelab-master` directory.
 <!-- PENDING: screenshot showing the files and directories in the piratebadge directory -->
 
 **Note:**
-If you see <span style="color:red">red X’s</span>
+If you see red X’s
 at the left of the filenames or if the `packages` directory is missing,
 the packages are not properly installed.
-Right click `pubspec.yaml` and select **Pub Get**.
+Right-click `pubspec.yaml` and select **Pub Get**.
 
 ## [Home](../README.md) | [Next >](step-1.md)
