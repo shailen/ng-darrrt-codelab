@@ -1,4 +1,4 @@
-## Step 8: Use a filter to capitalize text
+## Step 8: Use a filter to modify data
 
 > **Goal**: Using a filter to modify the provided data.
 
@@ -59,4 +59,4 @@ Check your code against the files in [8-filter](../web/8-filter).
 - [piratebadge.html](../web/8-filter/piratebadge.html)
 - [piratebadge.dart](../web/8-filter/piratebadge.dart)
 
-## [Home](../README.md) | [< Previous](step-7.md) | [Next >](step-9.md)
+## [Home](../README.md) | [< Previous](step-7.md)
