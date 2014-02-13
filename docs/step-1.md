@@ -16,9 +16,12 @@ In Dart Editor, open `pubspec.yaml` (in the top directory) by
 double-clicking its filename.
 
 Still in Dart Editor,
-expand the `1-blankbadge` directory by clicking the little arrow ►
-to the left of its name. 
-Under `1-blankbadge`, double-click `piratebadge.html` and `piratebadge.dart`.
+expand the `web` directory and its subdirectory `1-blankbadge` by
+clicking the little arrows ► to the left of their names. 
+Under `web/1-blankbadge`,
+double-click `piratebadge.html` and `piratebadge.dart`.
+
+![Open 3 source files](img/openfiles.png).
 
 ### Review the code.
 
