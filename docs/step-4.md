@@ -1,4 +1,4 @@
-## 4. Create a badge component.
+## Step 4: Create a badge component.
 > **Goal**: As a developer I can use a `<badge>` tag to put a badge anywhere.
 
 _**Keywords**: component, ShadowDOM_
