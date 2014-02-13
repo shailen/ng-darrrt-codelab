@@ -2,91 +2,66 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:math' show Random;
-import 'dart:async' show Future;
+library ng_dart_codelab.piratebadge;
 
+import 'service/names_service.dart';
 import 'package:angular/angular.dart';
-
 import 'badge/badge_component.dart';
 import 'filter/capitalize_filter.dart';
-import 'rockandroll/rockandroll_directive.dart';
 
 @MirrorsUsed(override:'*')
 import 'dart:mirrors';
 
 class PirateName {
-  static final Random indexGen = new Random();
+  String firstName, appellation;
 
-  static List names = [];
-  static List appellations = [];
+  PirateName([this.firstName = '', this.appellation = '']);
 
-  String _firstName;
-  String _appellation;
-
-  PirateName({String firstName, String appellation}) {
-
-    if (firstName == null) {
-      _firstName = names.isEmpty ? '' : names[indexGen.nextInt(names.length)];
-    } else {
-      _firstName = firstName;
-    }
-    if (appellation == null) {
-      _appellation = appellations.isEmpty ? '' : appellations[indexGen.nextInt(appellations.length)];
-    } else {
-      _appellation = appellation;
-    }
-  }
-
-  String toString() => pirateName;
-
-  String get pirateName => _firstName.isEmpty ? '' : '$_firstName the $_appellation';
+  String get pirateName => firstName.isEmpty ? '' :
+    '$firstName the $appellation';
 }
 
 @NgController(
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
-  PirateName _name = new PirateName(firstName: '');
+  NamesService ns; // Added.
 
-  final Http _http;
+  bool dataLoaded = false;
 
-  bool datasLoaded = false;
+  BadgesController(this.ns);
 
-  BadgesController(this._http) {
-    _loadData().then((_) {
-      datasLoaded = true;
-    }, onError: (_) {
-      datasLoaded = false;
+  PirateName pn;
+
+  String _name = '';
+
+  get name => _name;
+
+  set name(newName) {
+    _name = newName;
+    ns.randomAppellation().then((appellation) {
+      pn = new PirateName(name, appellation);
     });
   }
 
-  set name(String value) {
-    _name = new PirateName(firstName: value);
-  }
+  bool get inputIsNotEmpty => name.trim().isNotEmpty;
 
-  String get name => _name._firstName;
-  String get pirateName => _name.pirateName;
-  bool get inputIsNotEmpty => !name.trim().isEmpty;
-  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" : "Aye! Gimme a name!";
+  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" :
+    "Aye! Gimme a name!";
 
   generateName() {
-    _name = new PirateName();
-  }
-
-  Future _loadData() {
-    return _http.get('piratenames.json').then((HttpResponse response) {
-      PirateName.names = response.data['names'];
-      PirateName.appellations = response.data['appellations'];
-    });
+    pn = new PirateName();
+    return ns.randomAppellation()
+        .then((appellation) => pn.appellation = appellation)
+        .then((_) => ns.randomName())
+        .then((name) => pn.firstName = name);
   }
 }
 
 void main() {
   ngBootstrap(module: new Module()
     ..type(BadgesController)
-    ..type(BadgeComponent)
+    ..type(NamesService)
     ..type(CapitalizeFilter)
-    ..type(RockAndRoll)
-    );
+    ..type(BadgeComponent));
 }
-
