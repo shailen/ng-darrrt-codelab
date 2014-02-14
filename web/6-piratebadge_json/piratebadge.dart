@@ -25,7 +25,6 @@ class BadgesController {
   static List<String> appellations = [];
 
   final Http _http;
-
   bool dataLoaded = false;
 
   PirateName pn = new PirateName();
