@@ -43,8 +43,8 @@ the information they need to download the
 name: ng-darrrt-codelab
 description: A one hour exercise, based on the Darrrt project, to learn AngularDart.
 dependencies:
-    angular: any
-    browser: any
+    angular: 0.9.5
+    shadow_dom: any
 ```
 
 Key information:

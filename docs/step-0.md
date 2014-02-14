@@ -34,11 +34,11 @@ which creates a directory called `ng-darrrt-codelab-master`.
 In Dart Editor, use **File > Open Existing Folder...**
 to open the `ng-darrrt-codelab-master` directory.
 
-<!-- PENDING: screenshot showing the files and directories in the piratebadge directory -->
+![The codelab's directory structure: code for each completed step is under web/; a packages directory appears; pubspec.* define the app's dependencies.](img/fileview.png).
 
 **Note:**
 If you see red X’s
-at the left of the filenames or if the `packages` directory is missing,
+at the left of the filenames or if the `packages` directory doesn't appear,
 the packages are not properly installed.
 Right-click `pubspec.yaml` and select **Pub Get**.
 
