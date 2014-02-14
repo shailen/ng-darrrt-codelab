@@ -11,7 +11,7 @@ _**Keywords**: main, pub, Dartium, Angular_
 In Dart Editor, use **File > Open Existing Folder...** to open
 `ng-darrt-codelab-master`.
 
-### Open 3 source files.
+### Open the app's source files.
 
 The initial app uses the following source files:
 * pubspec.yaml: The app's description and dependencies, used by the Dart package manager
