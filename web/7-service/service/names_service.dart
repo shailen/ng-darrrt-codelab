@@ -15,10 +15,14 @@ class NamesService {
 
   Future _load() {
     if (names != null) return new Future.value(true);
-    return _http.get('piratenames.json').then((HttpResponse response) {
-      names = response.data['names'];
-      appellations = response.data['appellations'];
-    });
+    return _http.get('piratenames.json')
+      .then((HttpResponse response) {
+        names = response.data['names'];
+        appellations = response.data['appellations'];
+      })
+      .catchError((error) {
+        print('Could not read data from the JSON file: $error');
+      });
   }
 
   Future<String> randomName() {

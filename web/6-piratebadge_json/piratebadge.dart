@@ -33,11 +33,11 @@ class BadgesController {
     '${pn.firstName} the ${pn.appellation}';
 
   BadgesController(this._http) {
-    _loadData().then((_) {
-      dataLoaded = true;
-    }, onError: (_) {
-      dataLoaded = false;
-    });
+    _loadData()
+        .then((_) => dataLoaded = true)
+        .catchError((error) {
+          print('Could not read data from the JSON file: $error');
+        });
   }
 
   Future _loadData() {
