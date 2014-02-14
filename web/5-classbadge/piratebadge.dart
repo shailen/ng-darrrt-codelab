@@ -56,7 +56,9 @@ class BadgesController {
       ..appellation = _oneRandom(appellations);
   }
 
-  String _oneRandom(List<String> list) => list[new Random().nextInt(list.length)];
+  String _oneRandom(List<String> list) {
+    return list[new Random().nextInt(list.length)];
+  }
 }
 
 void main() {
