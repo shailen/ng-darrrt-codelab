@@ -13,7 +13,7 @@ class NamesService {
 
   NamesService(this._http);
 
-  Future _load() {
+  Future _loadData() {
     if (names != null) return new Future.value(true);
     return _http.get('piratenames.json')
       .then((HttpResponse response) {
@@ -26,11 +26,11 @@ class NamesService {
   }
 
   Future<String> randomName() {
-    return _load().then((_) => _oneRandom(names));
+    return _loadData().then((_) => _oneRandom(names));
   }
 
   Future<String> randomAppellation() {
-    return _load().then((_) => _oneRandom(appellations));
+    return _loadData().then((_) => _oneRandom(appellations));
   }
 
   String _oneRandom(List<String> list) => list[rand.nextInt(list.length)];

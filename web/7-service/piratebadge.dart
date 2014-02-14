@@ -36,7 +36,8 @@ class BadgesController {
   set name(newName) {
     _name = newName;
     ns.randomAppellation().then((appellation) {
-      pn = new PirateName(name, appellation);
+      pn..firstName = newName
+        ..appellation = appellation;
     });
   }
 
