@@ -6,34 +6,57 @@ that updates the text of the badge.
 _**Keywords**: binding, scope, model_
 
 -----------------------------
-> **Note**: Throughout this code lab, continue to edit the files in 1-blankbadge. You can use the files in the other directories to compare to your code or to recover if you get off track.
+> **Note**: Throughout this code lab, continue to edit the files in `web/1-blankbadge`.
+You can use the files in the other `web` subdirectories to compare to your code or to recover if you get off track.
 
 -----------------------------
 
-1. Open `web/1-blankbadge/piratebadge.html`. Add `ng-app` on the `<html>` element:
+### Edit piratebadge.dart.
 
-    ```HTML
-    <html ng-app>
-    ```
+Add the following imports at the top of the file (below the copyright,
+but above main()): 
 
-  >The `ng-app` Directive can be placed on any element, and tells Angular which element is the root element of the application. Anything inside of this element is part of the page template managed by Angular. Unless you have a reason for Angular to manage only part of the app, it is recommended to put the `ng-app` Directive on the HTML element because it is the outermost tag.
+<pre>
+<b>import 'package:angular/angular.dart';
 
-2. Open `web/1-blankbadge/piratebadge.dart`. Add `ngBootstrap()` and the import statements :
+@MirrorsUsed(override: '*')
+import 'dart:mirrors';</b>
+...
+</pre>
 
-    ```Dart
-  import 'package:angular/angular.dart';
+Key information:
 
-    @MirrorsUsed(override: '*')
-    import 'dart:mirrors';
-  
-  void main() {
-    ngBootstrap();
-  }
-    ```
-    
-    An `import` pulls in a Dart library. You also have to add an import
-    for `dart:mirrors` and annotate it with `@MirrorsUsed`, in order to
-    help the dart2js compiler generate smaller code.
+* An import pulls in a Dart library.
+* Importing `dart:mirrors` and annotating it with `@MirrorsUsed` is a temporary
+  measure that can help the dart2js compiler to generate smaller code.
+
+---
+
+Add `ngBootstrap();` to the `main`() method:
+
+<pre>
+void main() {
+<b>  ngBootstrap();</b>
+}
+</pre>
+
+
+### Edit piratebadge.html.
+
+Add an `ng-app` attribute to the `<html>` element:
+
+<pre>
+&lt;html <b>ng-app</b>>
+</pre>
+
+Key information:
+
+* The `ng-app` attribute is a _Angular directive_
+  that identifies the root element of the application.
+  Anything inside of the root element is part of the page template managed by Angular.
+  Unless you have a reason for Angular to manage only part of the app,
+  we recommend putting the `ng-app` directive on the `<html>` element because it is the outermost tag.
+
 
 
 3. Bind the `input` to the badge content:
