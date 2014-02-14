@@ -162,8 +162,21 @@ You've changed both the `name` setter and the `generateName()` method to use
 `NamesService`. The controller now has no knowledge of how the data is
 generated, but can request it from the service when needed.
 
-Save your changes and run your app. You'll see that it functions exactly as
-before.
+### Update the UI
+
+Notice that the `dataLoaded` field has been removed from the controller? You no
+longer fetch data when the page loads, but instead wait for user action before
+doing so. Update `pirateBadge.html` so that your input and button look like
+this:
+
+    <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name">
+
+    <button ng-click="ctrl.generateName()"
+            ng-disabled="ctrl.inputIsNotEmpty">
+            {{ctrl.label}}</button>
+
+
+Save your changes and run your app.
 
 
 ### Problems?
