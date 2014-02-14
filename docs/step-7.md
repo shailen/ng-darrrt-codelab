@@ -18,45 +18,45 @@ In the location that you created the `badge/` directory in Step 4, create a
 new directory and call it `service`. In this directory, create a new file,
 `names_service.dart`, and copy the following content to it:
 
-    ```Dart
-    library ng_dart_codelab.names_service;
+```Dart
+library ng_dart_codelab.names_service;
 
-    import 'package:angular/angular.dart';
-    import 'dart:async';
-    import 'dart:math';
+import 'package:angular/angular.dart';
+import 'dart:async';
+import 'dart:math';
 
-    @NgInjectableService()
-    class NamesService {
-      static final Random rand = new Random();
-      final Http _http;
-      List<String> names;
-      List<String> appellations;
+@NgInjectableService()
+class NamesService {
+  static final Random rand = new Random();
+  final Http _http;
+  List<String> names;
+  List<String> appellations;
 
-      NamesService(this._http);
+  NamesService(this._http);
 
-      Future _loadData() {
-        if (names != null) return new Future.value(true);
-        return _http.get('piratenames.json')
-          .then((HttpResponse response) {
-            names = response.data['names'];
-            appellations = response.data['appellations'];
-          })
-          .catchError((error) {
-            print('Could not read data from the JSON file: $error');
-          });
-      }
+  Future _loadData() {
+    if (names != null) return new Future.value(true);
+    return _http.get('piratenames.json')
+      .then((HttpResponse response) {
+        names = response.data['names'];
+        appellations = response.data['appellations'];
+      })
+      .catchError((error) {
+        print('Could not read data from the JSON file: $error');
+      });
+  }
 
-      Future<String> randomName() {
-        return _loadData().then((_) => _oneRandom(names));
-      }
+  Future<String> randomName() {
+    return _loadData().then((_) => _oneRandom(names));
+  }
 
-      Future<String> randomAppellation() {
-        return _loadData().then((_) => _oneRandom(appellations));
-      }
+  Future<String> randomAppellation() {
+    return _loadData().then((_) => _oneRandom(appellations));
+  }
 
-      String _oneRandom(List<String> list) => list[rand.nextInt(list.length)];
-    }
-    ```
+  String _oneRandom(List<String> list) => list[rand.nextInt(list.length)];
+}
+```
 
 We create a `NamesService` class and move much of the Step 6 controller logic into this class:
 
@@ -66,8 +66,10 @@ We create a `NamesService` class and move much of the Step 6 controller logic in
 defined the `randomName()` and `randomAppellation()` helper methods to fetch
 random data.
 
-The `_loadData()` method introduces an optimization: it checks if the `names` list has already been populated and fetches data only if it hasn't. As a result, you can call the  `randomName()` and `randomAppellation()` methods without
-loading up the JSON data every time.
+The `_loadData()` method introduces an optimization: it checks if the `names`
+list has already been populated and fetches data only if it hasn't. As a
+result, you can call the  `randomName()` and `randomAppellation()` methods
+without loading up the JSON data every time.
 
 Note the `@NgInjectableService` annotation for the `NamesService` class? This
 annotation when applied to a class indicates that the class will be
@@ -81,33 +83,32 @@ Open `piratebadge.dart`.
 Add the following import statement along with the other import statements at
 the top:
 
-
-    ```Dart
-    library ng_dart_codelab.piratebadge;
-    // ...
-    import 'service/names_service.dart';
-    ```
+```Dart
+library ng_dart_codelab.piratebadge;
+// ...
+import 'service/names_service.dart';
+```
 
 Add a `NamesService` instance to `BadgesController`:
 
-    ```Dart
-    class BadgesController {
-      NamesService ns;
-      // ...
-    }
-    ```
+```Dart
+class BadgesController {
+  NamesService ns;
+  // ...
+}
+```
 
 Add the `NamesService` type to `ngBootstrap()` to instantiate it using the
 dependency injector. Your `main()` now looks like this:
 
-    ```Dart
-    void main() {
-      ngBootstrap(module: new Module()
-        ..type(BadgesController)
-        ..type(NamesService)
-        ..type(BadgeComponent));
-    }
-    ```
+```Dart
+void main() {
+  ngBootstrap(module: new Module()
+    ..type(BadgesController)
+    ..type(NamesService)
+    ..type(BadgeComponent));
+}
+```
 
 ### Clean up the controller
 
@@ -115,48 +116,48 @@ Much of the Step 6 controller logic relating to fetching data can now be
 stripped away. Replace your controller from the previous step with this
 version:
 
-    ```Dart
-    @NgController(
-        selector: '[badges]',
-        publishAs: 'ctrl')
-    class BadgesController {
-      NamesService ns;
+```Dart
+@NgController(
+    selector: '[badges]',
+    publishAs: 'ctrl')
+class BadgesController {
+  NamesService ns;
 
-      PirateName pn = new PirateName();
+  PirateName pn = new PirateName();
 
-      String get pirateName => pn.firstName.isEmpty ? '' :
-        '${pn.firstName} the ${pn.appellation}';
+  String get pirateName => pn.firstName.isEmpty ? '' :
+    '${pn.firstName} the ${pn.appellation}';
 
-      BadgesController(this.ns);
+  BadgesController(this.ns);
 
-      String _name = '';
+  String _name = '';
 
-      get name => _name;
+  get name => _name;
 
-      set name(newName) {
-        _name = newName;
-        ns.randomAppellation().then((appellation) {
-          pn..firstName = newName
-            ..appellation = appellation;
+  set name(newName) {
+    _name = newName;
+    ns.randomAppellation().then((appellation) {
+      pn..firstName = newName
+        ..appellation = appellation;
+    });
+  }
+
+  bool get inputIsNotEmpty => name.trim().isNotEmpty;
+
+  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" :
+    "Aye! Gimme a name!";
+
+  generateName() {
+    return ns.randomAppellation()
+        .then((_appellation) => pn.appellation = _appellation)
+        .then((_) => ns.randomName())
+        .then((_name) {
+          pn.firstName = _name;
+          name = pn.firstName;
         });
-      }
-
-      bool get inputIsNotEmpty => name.trim().isNotEmpty;
-
-      String get label => inputIsNotEmpty ? "Arrr! Write yer name!" :
-        "Aye! Gimme a name!";
-
-      generateName() {
-        return ns.randomAppellation()
-            .then((_appellation) => pn.appellation = _appellation)
-            .then((_) => ns.randomName())
-            .then((_name) {
-              pn.firstName = _name;
-              name = pn.firstName;
-            });
-      }
-    }
-    ```
+  }
+}
+```
 
 You've changed both the `name` setter and the `generateName()` method to use
 `NamesService`. The controller now has no knowledge of how the data is
@@ -169,12 +170,18 @@ longer fetch data when the page loads, but instead wait for user action before
 doing so. Update `pirateBadge.html` so that your input and button look like
 this:
 
+```HTML
+<div class="widgets">
+  <div>
     <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name">
-
+  </div>
+  <div>
     <button ng-click="ctrl.generateName()"
-            ng-disabled="ctrl.inputIsNotEmpty">
-            {{ctrl.label}}</button>
-
+        ng-disabled="ctrl.inputIsNotEmpty">
+        {{ctrl.label}}</button>
+  </div>
+</div>
+```
 
 Save your changes and run your app.
 

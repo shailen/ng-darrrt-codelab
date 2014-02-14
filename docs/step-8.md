@@ -15,51 +15,53 @@ want.
 Create a file `filter/capitalize_filter.dart` in your work directory and
 paste the following content:
 
-    ```DART
-    library category_filter;
+```Dart
+library category_filter;
 
-    import 'package:angular/angular.dart';
+import 'package:angular/angular.dart';
 
-    @NgFilter(name: 'capitalize')
-    class CapitalizeFilter {
-      call(String name) {
-        if (name == null || name.isEmpty) return '';
-        return name[0].toUpperCase() + name.substring(1);
-      }
-    }
-    ```
+@NgFilter(name: 'capitalize')
+class CapitalizeFilter {
+  call(String name) {
+    if (name == null || name.isEmpty) return '';
+    return name[0].toUpperCase() + name.substring(1);
+  }
+}
+```
 
 To create a custom filter in Angular, just create a simple Dart class that has
 a call method with the following signature:
 
-    call(valueToFilter, optArg1, optArg2);
+```Dart
+call(valueToFilter, optArg1, optArg2);
+```
 
 ### Use the filter
 
 You need to register the filter in order to use . In `piratebadge.dart`, add
 this import:
 
-    ```DART
-    import 'filter/capitalize_filter.dart';
-    ```
+```Dart
+import 'filter/capitalize_filter.dart';
+```
 
 
 Now add the filter to the module definition:
 
-    ```DART
-    ngBootstrap(module: new Module()
-      ..type(BadgesController)
-      ..type(BadgeComponent)
-      ..type(CapitalizeFilter)
-      );
-    ```
+```Dart
+ngBootstrap(module: new Module()
+  ..type(BadgesController)
+  ..type(BadgeComponent)
+  ..type(CapitalizeFilter)
+  );
+```
 
 Now the filter can be used in `piratebadge.html`:
 
-    ```HTML
-    <badge name="{{ctrl.pirateName | capitalize}}"
-            style='float: left; margin-left: 20px;'></badge>
-    ```
+```HTML
+<badge name="{{ctrl.pirateName | capitalize}}"
+        style='float: left; margin-left: 20px;'></badge>
+```
 
 Here, we pipe the `pirateName` through the filter.
 
