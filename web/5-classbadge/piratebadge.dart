@@ -14,11 +14,7 @@ import 'dart:math' show Random;
 
 class PirateName {
   String firstName, appellation;
-
-  PirateName(this.firstName, this.appellation);
-
-  String get pirateName => firstName.isEmpty ? '' :
-    '$firstName the $appellation';
+  PirateName([this.firstName = '', this.appellation = '']);
 }
 
 @NgController(
@@ -34,7 +30,10 @@ class BadgesController {
     'Black','Damned', 'Jackal', 'Red', 'Stalwart', 'Axe',
     'Young', 'Old', 'Angry', 'Brave', 'Crazy', 'Noble'];
 
-  PirateName pn;
+  PirateName pn = new PirateName();
+
+  String get pirateName => pn.firstName.isEmpty ? '' :
+    '${pn.firstName} the ${pn.appellation}';
 
   String _name = '';
 
@@ -42,8 +41,8 @@ class BadgesController {
 
   set name(newName) {
     _name = newName;
-    pn = new PirateName(name,
-        appellations[new Random().nextInt(appellations.length)]);
+    pn..firstName = name
+      ..appellation = _oneRandom(appellations);
   }
 
   bool get inputIsNotEmpty => name.trim().isNotEmpty;
@@ -52,12 +51,13 @@ class BadgesController {
     "Aye! Gimme a name!";
 
   generateName() {
-    var rand = new Random();
-    var randomName = names[rand.nextInt(names.length)];
+    var randomName = _oneRandom(names);
     name = randomName;
-    pn = new PirateName(randomName,
-        appellations[new Random().nextInt(appellations.length)]);
+    pn..firstName = randomName
+      ..appellation = _oneRandom(appellations);
   }
+
+  String _oneRandom(List<String> list) => list[new Random().nextInt(list.length)];
 }
 
 void main() {

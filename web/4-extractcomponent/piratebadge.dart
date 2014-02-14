@@ -8,18 +8,6 @@ import 'badge/badge_component.dart';
 @MirrorsUsed(override:'*')
 import 'dart:mirrors';
 
-
-
-
-
-
-
-
-
-
-
-
-
 @NgController(
     selector: '[badges]',
     publishAs: 'ctrl')
