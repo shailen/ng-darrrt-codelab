@@ -1,10 +1,13 @@
 ## Step 5: Use a class as a model
-> **Goal**: As a developer, I want to use a class object as model.
+
+
+In this step, you use define and use a model.
 
 _**Keywords**: class_
 
-1. (Re)Create a PirateName class
- - Copy and paste the following code in `piratebadge.dart`:
+### Create a PirateName class
+
+ Copy and paste the following code in `piratebadge.dart`:
 
     ```Dart
     import 'dart:math' show Random;
@@ -18,8 +21,10 @@ _**Keywords**: class_
         '$firstName the $appellation';
     }
     ```
-2. Update the `BadgesController`
- - In `piratebadge.dart`, add a new private field `PirateName pn` in
+
+### Update the controller
+
+In `piratebadge.dart`, add a new private field `PirateName pn` in
 `BadgesController`:
 
     ```Dart
@@ -29,7 +34,8 @@ _**Keywords**: class_
       // ...
     }
     ```
- - Add  a private `_name` field that we'll later bind into the UI:
+
+Add  a private `_name` field that we'll later bind into the UI:
 
     ```Dart
     class BadgesController {
@@ -38,7 +44,7 @@ _**Keywords**: class_
       // ...
     ```
 
- - Define a getter and a setter to get and set the value of `_name`. The
+Define a getter and a setter to get and set the value of `_name`. The
 setter not only sets the value of `_name`, it also sets the `firstName` and
 `appelation` fields of the `PirateBadge` object:
 
@@ -55,7 +61,7 @@ setter not only sets the value of `_name`, it also sets the `firstName` and
 
     ```
 
- - Update `generateName()` method to create a new `PirateName` instance.
+Update `generateName()` method to create a new `PirateName` instance.
 
     ```Dart
     class BadgesController {
@@ -70,11 +76,11 @@ setter not only sets the value of `_name`, it also sets the `firstName` and
       // ...
     }
     ```
-3. Update data bindings
- - In `piratebadge.html`, update the data binding in the `badge` tag
+### Update data bindings
+
+In `piratebadge.html`, update the data binding in the `badge` tag
 
     ```HTML
-
     <badge name="{{ctrl.pn.pirateName}}"
         style='float: left; margin-left: 20px;'></badge>
     ```

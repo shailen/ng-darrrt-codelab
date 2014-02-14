@@ -18,7 +18,7 @@ double-clicking its filename.
 
 Still in Dart Editor,
 expand the `web` directory and its subdirectory `1-blankbadge` by
-clicking the little arrows ► to the left of their names. 
+clicking the little arrows ► to the left of their names.
 Under `web/1-blankbadge`,
 double-click `piratebadge.html` and `piratebadge.dart`.
 
@@ -30,7 +30,7 @@ Get familiar with `pubspec.yaml`, and with the HTML and the Dart code
 for the skeleton version of the app.
 
 #### pubspec.yaml
-  
+
 To see the raw source for this file,
 click the **Source** tab at the bottom of the edit view.
 The `pubspec.yaml` file in the project root gives information
@@ -66,7 +66,7 @@ Key information:
   </head>
   <body>
     <h1>Pirate badge</h1>
-    
+
     <div class="widgets">
       TO DO: Put the UI widgets here.
     </div>
@@ -95,7 +95,7 @@ Key information:
    either bootstraps the Dart VM or loads compiled JavaScript instead.
 
 #### piratebadge.dart
-  
+
 ```Dart
 void main() {
   // Your app starts here.
@@ -116,8 +116,8 @@ To run the app in Dart Editor, right-click `piratebadge.html` and select **Run i
 
 ![Click the run button](img/clickrun.png).
 
-Dart Editor launches _Dartium_, a special build of Chromium that has the Dart Virtual Machine built in, and loads the `piratebadge.html` file. 
-The `piratebadge.html` file loads the app and calls the `main()` function.  
+Dart Editor launches _Dartium_, a special build of Chromium that has the Dart Virtual Machine built in, and loads the `piratebadge.html` file.
+The `piratebadge.html` file loads the app and calls the `main()` function.
 You should see a TO DO comment on the left and a red and white name badge on the right.
 
 ## [Home](../README.md) | [< Previous](step-0.md) | [Next >](step-2.md)
