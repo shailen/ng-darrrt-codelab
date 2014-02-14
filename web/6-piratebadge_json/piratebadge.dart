@@ -14,20 +14,24 @@ import 'dart:mirrors';
 
 class PirateName {
   String firstName, appellation;
-
-  PirateName(this.firstName, this.appellation);
-
-  String get pirateName => firstName.isEmpty ? '' :
-    '$firstName the $appellation';
+  PirateName([this.firstName = '', this.appellation = '']);
 }
 
 @NgController(
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
+  static List<String> names = [];
+  static List<String> appellations = [];
+
   final Http _http;
 
   bool dataLoaded = false;
+
+  PirateName pn = new PirateName();
+
+  String get pirateName => pn.firstName.isEmpty ? '' :
+    '${pn.firstName} the ${pn.appellation}';
 
   BadgesController(this._http) {
     _loadData().then((_) {
@@ -37,17 +41,12 @@ class BadgesController {
     });
   }
 
-  static List<String> names = [];
-  static List<String> appellations = [];
-
   Future _loadData() {
     return _http.get('piratenames.json').then((HttpResponse response) {
       names = response.data['names'];
       appellations = response.data['appellations'];
     });
   }
-
-  PirateName pn;
 
   String _name = '';
 
@@ -65,12 +64,13 @@ class BadgesController {
     "Aye! Gimme a name!";
 
   generateName() {
-    var rand = new Random();
-    var randomName = names[rand.nextInt(names.length)];
+    var randomName = _oneRandom(names);
     name = randomName;
-    pn = new PirateName(randomName,
-        appellations[new Random().nextInt(appellations.length)]);
+    pn..firstName = randomName
+      ..appellation = _oneRandom(appellations);
   }
+
+  String _oneRandom(List<String> list) => list[new Random().nextInt(list.length)];
 }
 
 void main() {

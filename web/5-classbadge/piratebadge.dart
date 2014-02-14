@@ -21,7 +21,6 @@ class PirateName {
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
-
   static const List names = const [
     'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
     'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
