@@ -7,9 +7,8 @@ _**Keywords**: HTTP Request, Dependency Injection_
 
 ### Create piratenames.json
 
-Create a JSON-encoded file named `piratenames.json` with the following content.
-Put the file alongside the `piratenames.dart` and `piratenames.html` files
-you've been editing.
+In the same directory as `piratenames.dart`, create a JSON-encoded file named
+`piratenames.json` with the following content:
 
 ```JSON
 { "names": [ "Anne", "Bette", "Cate", "Dawn",
@@ -44,21 +43,24 @@ you've been editing.
 
 ### Edit piratebadge.dart
 
-Add this import to the top of the file.
+Add this import to the list of imports in `piratebadge.dart`.
 
 ```Dart
 import 'dart:async' show Future;
 ```
 
-The dart:async library provides for asynchronous programming. A Future provides
+Ignore the 'Unused import' warning from the Editor. You'll soon be using the
+import.
+
+The dart:async library is used for asynchronous programming. A Future provides
 a way to get a value in the future. For JavaScript developers:
 Futures are similar to Promises.
 
-In `PirateName` class, replace the `names` and `appelations` lists with these
-static, empty lists:
+In `BadgesController` class, replace the `names` and `appelations` lists with
+these static, empty lists:
 
 ```Dart
-class PirateName {
+class BadgesController {
   // ...
   static List<String> names = [];
   static List<String> appellations = [];
@@ -66,30 +68,24 @@ class PirateName {
 }
 ```
 
-In `BadgesController`, add a private `Http _http` field:
+In `BadgesController`, add a private `Http _http` field, and add a constructor
+to initialize `_http`:
 
 ```Dart
 class BadgesController {
   // ...
   final Http _http;
-  // ...
-}
-```
-
-The `Http` service facilitates communication with the remote HTTP servers.
-Add a constructor to initialize `_http`:
-
-```Dart
-class BadgesController {
-  // ...
   BadgesController(this._http);
   // ...
 }
 ```
 
-An instance of the `Http` service is automatically injected by Angular.
+The `Http` service facilitates communication with the remote HTTP servers.
 
-Add a private function `_loadData`:
+You don't need to do anything to `ngBootstrap()` to use the `Http` service
+since an instance of it is automatically injected by Angular.
+
+Now add a private `_loadData()` method to `BadgesController`:
 
 ```Dart
 class BadgesController {
@@ -98,7 +94,8 @@ class BadgesController {
     return _http.get('piratenames.json').then((HttpResponse response) {
       names = response.data['names'];
       appellations = response.data['appellations'];
-  });
+    });
+  }
   // ...
 }
 ```
@@ -111,9 +108,18 @@ Here are some things to note about `_loadData`:
 successfully, and the pirate names and appelations are read from the
 response  data.
 
-In the `BadgesController` constructor, define a `dataLoaded` boolean and set
-it to `false`. When `_loadData()` reads the JSON content, `dataLoaded` becomes
-`true`:
+Add a `dataLoaded` field to `BadgesController` and set it to `false`:
+
+```Dart
+class BadgesController {
+  // ...
+  bool dataLoaded = false;
+
+  // ...
+```
+
+Replace the code you have for the `BadgesController` constructor with the
+following:
 
 ```Dart
 class BadgesController {
@@ -130,24 +136,30 @@ class BadgesController {
   // ...
 ```
 
-If the Future encounters an error, the `catchError()` method handles it.
-Chaining `then()` and `catchError()` when getting the value of Future is a
-common pattern in Dart asynchronous programming.
+When `_loadData()` successfully reads the JSON content, `dataLoaded` becomes
+`true`. If the Future returned by `_loadData()` completes with an error,
+`catchError()` handles the error.  Chaining `then()` and `catchError()` when
+getting the value of Future is a common pattern in Dart asynchronous
+programming and can be thought as the rough equivalent of a synchronous
+try-catch block.
 
 
 ### Edit piratebadge.html
 
-Disable `inputName` and the `button` by default, and enable them only when
-the JSON data is loaded:
+Change the input and the button so that they are disabled by default, and enable
+them only when the JSON data is loaded:
 
 ```HTML
 ...
-  <div>
-    <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name" ng-disabled="!ctrl.dataLoaded">
-  </div>
-  <div>
-    <button ng-click="ctrl.generateName()" ng-disabled="!ctrl.dataLoaded || ctrl.inputIsNotEmpty">{{ctrl.label}}</button>
-  </div>
+<div>
+  <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name"
+      ng-disabled="!ctrl.dataLoaded">
+</div>
+<div>
+  <button ng-click="ctrl.generateName()"
+      ng-disabled="!ctrl.dataLoaded || ctrl.inputIsNotEmpty">
+      {{ctrl.label}}</button>
+</div>
 ...
 ```
 
