@@ -37,25 +37,34 @@ The `pubspec.yaml` file in the project root gives information
 about this app and the packages it depends on.
 In particular, the dependency on **angular** gives the Dart tools
 the information they need to download the
-[angular package from pub.dartlang.org](https://pub.dartlang.org/packages/angular).
+[angular package](https://pub.dartlang.org/packages/angular).
 
 ``` yaml
 name: ng-darrrt-codelab
 description: A one hour exercise, based on the Darrrt project, to learn AngularDart.
 dependencies:
     angular: 0.9.5
+    browser: any
     shadow_dom: any
 ```
 
 Key information:
 
-* Thanks to this file, you can define the name, the description of our project and many dependencies by adding a `name_of_your_dependency: version_of_your_dependency` line in the `dependencies` section (be careful, the YAML format that is used by the pubspec file is sensitive to indentation). In our case, we define that the project needs any version of the `browser`, `shadow_dom` and the `angular` packages.
-* The `browser` package is used in Dart browser apps to check for native Dart support and either (a) bootstrap Dartium or (b) load compiled JS instead.
-* The `angular` package is the port of the Angular framework in Dart.
-* Dart packages are stored and listed on [pub.dartlang.org](http://pub.dartlang.org/).
+* All AngularDart apps depend on `angular` and
+  (to accommodate browsers that don't yet support Shadow DOM) `shadow_dom`.
+* Like most Dart web apps, this app also depends on `browser`.
+* Angular depends on other packages (including `browser`, as it happens).
+  The pub package manager automatically finds the right versions of these packages.
+* You can find many Dart packages, including angular,
+  on [pub.dartlang.org](http://pub.dartlang.org/).
+* For more information about the pub package manager, see the
+  [pub documentation](https://www.dartlang.org/tools/pub/).
 
 
 #### piratebadge.html
+
+The first version of this HTML file contains no Angular code.
+However, it does set you up to add Angular code in the next step.
 
 ```HTML
 <html>
@@ -86,15 +95,19 @@ Key information:
 </html>
 ```
 Key information:
-- The first `<script>` tag is here to emulate ShadowDom on browsers that don't support this natively.
-- The second `<script>` tag identifies the main file that implements the app. Here, it’s the `piratebadge.dart` file.
-- The Dart Virtual Machine (Dart VM) runs Dart code natively.
-  The Dart VM is built into Dartium, a special build of the Chromium browser
-  in which you can run Dart apps natively.
+- The first `<script>` tag emulates Shadow DOM on browsers that don't support it natively.
+- The second `<script>` tag identifies the main file that implements the app.
+  Here, it’s the `piratebadge.dart` file.
 - The `packages/browser/dart.js` script checks for native Dart support and
-   either bootstraps the Dart VM or loads compiled JavaScript instead.
+  either bootstraps the Dart VM or loads compiled JavaScript instead.
+- Dartium is a special build of the Chromium browser
+  that has a Dart VM, so it can run Dart apps natively.
 
 #### piratebadge.dart
+
+This version of the app does nothing,
+and has almost no Dart code.
+In the next step, you'll add some code.
 
 ```Dart
 void main() {
