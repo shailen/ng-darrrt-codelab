@@ -1,6 +1,6 @@
 ## Step 5: Use a class as a model
 
-In this step, you use define and use a model.
+In this step, you define and use a model.
 
 _**Keywords**: class_
 
@@ -8,20 +8,23 @@ _**Keywords**: class_
 
 First, add the following import to `piratebadge.dart`:
 
-    ```Dart
-    import 'dart:math' show Random;
-    ```
+```Dart
+import 'dart:math' show Random;
+```
+
+The Editor will complain about an unused import. Don't worry about that, we'll
+be using `Random` later in this step.
 
 ### Create a PirateName class
 
 Copy and paste the following code in `piratebadge.dart`:
 
-    ```Dart
-    class PirateName {
-      String firstName, appellation;
-      PirateName([this.firstName = '', this.appellation = '']);
-    }
-    ```
+```Dart
+class PirateName {
+  String firstName, appellation;
+  PirateName([this.firstName = '', this.appellation = '']);
+}
+```
 
 This is the model for this app.
 
@@ -29,112 +32,120 @@ This is the model for this app.
 
 Add the following `const` lists inside `BadgesController`:
 
-    ```Dart
-    class BadgesController {
-      // ...
-      static const List names = const [
-        'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
-        'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
+```Dart
+class BadgesController {
+  // ...
+  static const List names = const [
+    'Anne', 'Mary', 'Jack', 'Morgan', 'Roger',
+    'Bill', 'Ragnar', 'Ed', 'John', 'Jane' ];
 
-      static const List appellations = const [
-        'Black','Damned', 'Jackal', 'Red', 'Stalwart', 'Axe',
-        'Young', 'Old', 'Angry', 'Brave', 'Crazy', 'Noble'];
-      // ...
-    }
-    ```
+  static const List appellations = const [
+    'Black','Damned', 'Jackal', 'Red', 'Stalwart', 'Axe',
+    'Young', 'Old', 'Angry', 'Brave', 'Crazy', 'Noble'];
+  // ...
+}
+```
 
-We will write code in this step to generate pirate names by obtaining random
-values in each list.
+You'll write code later in this step to generate pirate names by obtaining
+random values from each list.
 
 Add the following utility function that helps pick random names and
 appellations:
 
 
-    ```Dart
-    class BadgesController {
-      // ...
-      String _oneRandom(List<String> list) {
-        return list[new Random().nextInt(list.length)];
-      }
-      // ...
-    }
+```Dart
+class BadgesController {
+  // ...
+  String _oneRandom(List<String> list) {
+    return list[new Random().nextInt(list.length)];
+  }
+  // ...
+}
 
 Inside `BadgesController`, create a new model instance:
 
-    ```Dart
-    class BadgesController {
-      // ...
-      PirateName pn = new PirateName();
-      // ...
-    }
-    ```
+```Dart
+class BadgesController {
+  // ...
+  PirateName pn = new PirateName();
+  // ...
+}
+```
 
-Define a `pirateName` field in the controller. This field gets the pirate's
-complete name.  We pass this field as an argument to the component that we
-created in step 4 later in this step.
+Now add this `pirateName` getter to the controller.
 
 
-    ```Dart
-    class BadgesController {
-        // ...
-        String get pirateName => pn.firstName.isEmpty ? '' :
-        '${pn.firstName} the ${pn.appellation}';
-        // ...
-    }
-    ```
+```Dart
+class BadgesController {
+  // ...
+  String get pirateName => pn.firstName.isEmpty ? '' :
+  '${pn.firstName} the ${pn.appellation}';
+  // ...
+}
+```
 
-In step 4, we defined the following code:
+This getter returns the complete name of the pirate. You will soon add code to
+pass the string returned by this getter as an argument to the component that we
+created in step 4.
 
-    ```Dart
-    String name = '';
-    ```
+`BadgesController` contains a `name` field:
 
-Replace that line with the following code:
+```Dart
+class BadgesController {
+  // ...
+  String name = '';
+  // ...
+}
+
+_Replace_ that line with the following code:
 
 
-    ```Dart
-    class BadgesController {
-      // ...
-      String _name = '';
+```Dart
+class BadgesController {
+  // ...
+  String _name = '';
 
-      get name => _name;
+  get name => _name;
 
-      set name(newName) {
-        _name = newName;
-        pn..firstName = name
-          ..appellation = _oneRandom(appellations);
-      }
-      // ...
-    }
-    ```
+  set name(newName) {
+    _name = newName;
+    pn..firstName = name
+      ..appellation = _oneRandom(appellations);
+  }
+  // ...
+}
+```
 
 We've added a private `_name` field that we'll later bind into the UI, and
 we've defined a getter and a setter to get and set its value. The
 setter also sets the `firstName` and `appelation` fields of the
-`PirateBadge` object.
+`PirateBadge` object. Every time the value of `_name` changes, the change is
+reflected in `pn`, the `PirateName` object.
 
-Update `generateName()` to set the fields of the `PirateInstance` instance:
+Update `generateName()`. So far, this method has produced a static name. Now
+you'll add code to generate a name based on randomly picked values from the
+`names` and `appellations` lists. _Replace_ the verion of `generateName()`
+with the following code:
 
-    ```Dart
-    class BadgesController {
-      // ...
-      generateName() {
-        var randomName = _oneRandom(names);
-        name = randomName;
-        pn..firstName = randomName
-          ..appellation = _oneRandom(appellations);
-      }
-      // ...
-    }
-    ```
+```Dart
+generateName() {
+  var randomName = _oneRandom(names);
+  name = randomName;
+  pn..firstName = randomName
+    ..appellation = _oneRandom(appellations);
+}
+```
+
 ### Update data bindings
 
-In `piratebadge.html`, update the data binding in the `badge` tag:
+Remember the `pirateName` controller getter you defined a short while ago?
+Now, in `piratebadge.html`, update the data binding in the `badge` tag to use
+that getter:
 
-    ```HTML
-    <badge name="{{ctrl.pirateName}}"
-        style='float: left; margin-left: 20px;'></badge>
-    ```
+```HTML
+<badge name="{{ctrl.pirateName}}"
+    style='float: left; margin-left: 20px;'></badge>
+```
 
 Now run your code. You should be able to enter text into the input box and see
 a pirate name in the pirate badge. You should also be able to generate a
