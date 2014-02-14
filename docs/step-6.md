@@ -114,8 +114,8 @@ Add a `dataLoaded` field to `BadgesController` and set it to `false`:
 class BadgesController {
   // ...
   bool dataLoaded = false;
-
   // ...
+}
 ```
 
 Replace the code you have for the `BadgesController` constructor with the
@@ -150,17 +150,17 @@ Change the input and the button so that they are disabled by default, and enable
 them only when the JSON data is loaded:
 
 ```HTML
-...
-<div>
-  <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name"
-      ng-disabled="!ctrl.dataLoaded">
+<div class="widgets">
+  <div>
+    <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name"
+        ng-disabled="!ctrl.dataLoaded">
+  </div>
+  <div>
+    <button ng-click="ctrl.generateName()"
+        ng-disabled="!ctrl.dataLoaded || ctrl.inputIsNotEmpty">
+        {{ctrl.label}}</button>
+  </div>
 </div>
-<div>
-  <button ng-click="ctrl.generateName()"
-      ng-disabled="!ctrl.dataLoaded || ctrl.inputIsNotEmpty">
-      {{ctrl.label}}</button>
-</div>
-...
 ```
 
 If the expression in `ng-disabled` is truthy, then special attribute
