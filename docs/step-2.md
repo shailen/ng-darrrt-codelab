@@ -14,7 +14,7 @@ You can use the files in the other `web` subdirectories to compare to your code 
 ### Edit piratebadge.dart.
 
 Add the following imports at the top of the file (below the copyright,
-but above main()): 
+but above main()).
 
 <pre>
 <b>import 'package:angular/angular.dart';
@@ -40,6 +40,11 @@ void main() {
 }
 </pre>
 
+Key information:
+* Once an application is bootstrapped, it’s ready to respond to incoming browser events
+  (such as mouse clicks, key presses, or incoming HTTP responses)
+  that might change the data that the app displays.
+
 
 ### Edit piratebadge.html.
 
@@ -57,25 +62,43 @@ Key information:
   Unless you have a reason for Angular to manage only part of the app,
   we recommend putting the `ng-app` directive on the `<html>` element because it is the outermost tag.
 
+---
 
+Add a `<div>` containing an `<input>` element to the "widgets" `<div>`.
 
-3. Bind the `input` to the badge content:
- - Set `{{name}}` as content within the `badgeName` `<span>`
+<pre>
+...
+&lt;div class="widgets">
+<b>  &lt;div>
+    &lt;input type="text" id="inputName" maxlength="15" ng-model="name">
+  &lt;/div></b>
+&lt;/div>
+...
+</pre>
 
-    ```HTML
-    <span id="badgeName">{{name}}</span>
-    ```
- - Add the `<input>` tag to the HTML code within the `widgets` `<div>`
+Key information:
+* The `ng-model` directive binds the input's value attribute to the property `name`.
+* Angular creates the `name` property if it doesn't already exist (which it doesn't, in this case).
 
-    ```HTML
-    <div>
-      <input type="text" id="inputName" maxlength="15" ng-model="name">
-    </div>
-    ```
+---
 
- > Notice that on the input element, we find a Directive called `ng-model`. The value of the model object is displayed in the view using the Angular expression `{{name}}`. 
+Insert `{{name}}` in the "badgeName" span, and add an `ng-cloak` directive to hide it.
 
-4. Run `web/1-blankbadge/piratebadge.html` and try to modify the input content. Notice how the view is updated in real time whenever the model changes. This is called _Two Way Data Binding_. Angular listens for changes to the model and updates the view to reflect those changes.
+<pre>
+&lt;span id="badgeName" <b>ng-cloak</b>><b>{{name}}</b>&lt;/span>
+</pre>
+
+Key information:
+* Angular uses double curly braces  `{{...}}`, also known as double-mustache syntax,
+  to contain Angular expressions. 
+  Angular evaluates the expression and puts the result in the DOM.
+* Angular swaps out `{{name}}` and substitutes the value of the `name` property.
+* If you don't use `ng-cloak` and related CSS,
+  Angular expressions such as `{{name}}` will be visible in your app until Angular swaps them out.
+
+### Run the app.
+
+Modify the input content. Notice how the view is updated in real time whenever the model changes. This is called _Two Way Data Binding_. Angular listens for changes to the model and updates the view to reflect those changes.
 
 ### Learn more about
  - [How Angular does MVC](https://github.com/angular/angular.dart.tutorial/wiki/Creating-your-first-Angular-app#how-angular-does-mvc)
