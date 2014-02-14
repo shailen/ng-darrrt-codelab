@@ -14,24 +14,21 @@ import 'dart:mirrors';
 
 class PirateName {
   String firstName, appellation;
-
   PirateName([this.firstName = '', this.appellation = '']);
-
-  String get pirateName => firstName.isEmpty ? '' :
-    '$firstName the $appellation';
 }
 
 @NgController(
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
-  NamesService ns; // Added.
+  NamesService ns;
 
-  bool dataLoaded = false;
+  PirateName pn = new PirateName();
+
+  String get pirateName => pn.firstName.isEmpty ? '' :
+    '${pn.firstName} the ${pn.appellation}';
 
   BadgesController(this.ns);
-
-  PirateName pn;
 
   String _name = '';
 
@@ -50,11 +47,13 @@ class BadgesController {
     "Aye! Gimme a name!";
 
   generateName() {
-    pn = new PirateName();
     return ns.randomAppellation()
-        .then((appellation) => pn.appellation = appellation)
+        .then((_appellation) => pn.appellation = _appellation)
         .then((_) => ns.randomName())
-        .then((name) => pn.firstName = name);
+        .then((_name) {
+          pn.firstName = _name;
+          name = pn.firstName;
+        });
   }
 }
 
