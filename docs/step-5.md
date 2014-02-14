@@ -96,6 +96,7 @@ class BadgesController {
   String name = '';
   // ...
 }
+```
 
 _Replace_ that line with the following code:
 
