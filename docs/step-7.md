@@ -156,14 +156,16 @@ set name(newName) {
 
 And you've modified `generateName()` to also use the service:
 
-  generateName() {
-    return ns.randomAppellation()
-        .then((_appellation) => pn.appellation = _appellation)
-        .then((_) => ns.randomName())
-        .then((_name) {
-          pn.firstName = _name;
-          name = pn.firstName;
-        });
+```Dart
+generateName() {
+  return ns.randomAppellation()
+      .then((_appellation) => pn.appellation = _appellation)
+      .then((_) => ns.randomName())
+      .then((_name) {
+        pn.firstName = _name;
+        name = pn.firstName;
+      });
+```
 
 Note the chained `then()` calls to first fetch a random appellation and then
 fetch a random name. Chained `then()` calls are a common pattern in async Dart
@@ -171,6 +173,13 @@ programming.
 
 The controller now has no knowledge of how the data is generated, but can
 request it from the service when needed.
+
+Since the code for picking random values has been moved to the service, you
+can remove this unused import:
+
+```Dart
+import 'dart:math' show Random;
+```
 
 ### Use the service
 

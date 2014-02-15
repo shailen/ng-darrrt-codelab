@@ -52,10 +52,6 @@ import 'dart:async' show Future;
 Ignore the 'Unused import' warning from the Editor. You'll soon be using the
 import.
 
-The dart:async library is used for asynchronous programming. A Future provides
-a way to get a value in the future. For JavaScript developers:
-Futures are similar to Promises.
-
 In `BadgesController` class, replace the `names` and `appelations` lists with
 these static, empty lists:
 
@@ -103,7 +99,9 @@ class BadgesController {
 Here are some things to note about `_loadData`:
 
 * The `get` method is used to make Http GET requests.
-* The code uses a Future to perform the GET asynchronously.
+* The code uses a Future to perform the GET asynchronously. A Future is
+a way to get a value in the future. For JavaScript developers: Futures are
+similar to Promises.
 * The callback function for `then()` executes when the Future completes
 successfully, and the pirate names and appelations are read from the
 response  data.

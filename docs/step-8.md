@@ -51,9 +51,9 @@ Now add the filter to the module definition:
 ```Dart
 ngBootstrap(module: new Module()
   ..type(BadgesController)
+  ..type(NamesService)
   ..type(BadgeComponent)
-  ..type(CapitalizeFilter)
-  );
+  ..type(CapitalizeFilter));
 ```
 
 Now the filter can be used in `piratebadge.html`:
