@@ -61,6 +61,7 @@ class BadgesController {
   }
   // ...
 }
+```
 
 Inside `BadgesController`, create a new model instance:
 
