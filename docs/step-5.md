@@ -132,8 +132,6 @@ with the following code:
 generateName() {
   var randomName = _oneRandom(names);
   name = randomName;
-  pn..firstName = randomName
-    ..appellation = _oneRandom(appellations);
 }
 ```
 
