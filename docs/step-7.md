@@ -151,16 +151,13 @@ set name(newName) {
 And you've modified `generateName()` to also use the service:
 
 ```Dart
-generateName() {
-  return ns.randomName().then((_name) {
-    name = _name;
-  });
-}
+generateName() => ns.randomName().then((_name) {
+  name = _name;
+});
 ```
 
-Note the chained `then()` calls to first fetch a random appellation and then
-fetch a random name. Chained `then()` calls are a common pattern in async Dart
-programming.
+Note that `generateName()` updates the value of `_name`. This triggers the
+`name` setter, which updates `pn.firstName` and `pn.appelation`.
 
 The controller now has no knowledge of how the data is generated, but can
 request it from the service when needed.
