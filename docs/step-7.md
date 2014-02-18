@@ -126,7 +126,7 @@ class BadgesController {
     "Aye! Gimme a name!";
 
   generateName() {
-    return ns.randomAppellation()
+    ns.randomAppellation()
         .then((_appellation) => pn.appellation = _appellation)
         .then((_) => ns.randomName())
         .then((_name) {
@@ -158,7 +158,7 @@ And you've modified `generateName()` to also use the service:
 
 ```Dart
 generateName() {
-  return ns.randomAppellation()
+  ns.randomAppellation()
       .then((_appellation) => pn.appellation = _appellation)
       .then((_) => ns.randomName())
       .then((_name) {
