@@ -61,6 +61,7 @@ class BadgesController {
   }
   // ...
 }
+```
 
 Inside `BadgesController`, create a new model instance:
 
@@ -125,7 +126,7 @@ reflected in `pn`, the `PirateName` object.
 
 Update `generateName()`. So far, this method has produced a static name. Now
 you'll add code to generate a name based on randomly picked values from the
-`names` and `appellations` lists. _Replace_ the verion of `generateName()`
+`names` and `appellations` lists. _Replace_ the version of `generateName()`
 with the following code:
 
 ```Dart
