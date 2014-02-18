@@ -126,13 +126,9 @@ class BadgesController {
     "Aye! Gimme a name!";
 
   generateName() {
-    ns.randomAppellation()
-        .then((_appellation) => pn.appellation = _appellation)
-        .then((_) => ns.randomName())
-        .then((_name) {
-          pn.firstName = _name;
-          name = pn.firstName;
-        });
+    ns.randomName().then((_name) {
+      name = _name;
+    });
   }
 }
 ```
@@ -158,18 +154,13 @@ And you've modified `generateName()` to also use the service:
 
 ```Dart
 generateName() {
-  ns.randomAppellation()
-      .then((_appellation) => pn.appellation = _appellation)
-      .then((_) => ns.randomName())
-      .then((_name) {
-        pn.firstName = _name;
-        name = pn.firstName;
-      });
+  ns.randomName().then((_name) {
+    name = _name;
+  });
 ```
 
-Note the chained `then()` calls to first fetch a random appellation and then
-fetch a random name. Chained `then()` calls are a common pattern in async Dart
-programming.
+Note that `generateName()` first fetches a random name and then calls on
+`set name()` to fetch a random appellation.
 
 The controller now has no knowledge of how the data is generated, but can
 request it from the service when needed.
