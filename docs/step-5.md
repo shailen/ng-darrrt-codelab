@@ -61,6 +61,7 @@ class BadgesController {
   }
   // ...
 }
+```
 
 Inside `BadgesController`, create a new model instance:
 
@@ -130,10 +131,7 @@ with the following code:
 
 ```Dart
 generateName() {
-  var randomName = _oneRandom(names);
-  name = randomName;
-  pn..firstName = randomName
-    ..appellation = _oneRandom(appellations);
+  name = _oneRandom(names);
 }
 ```
 
