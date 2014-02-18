@@ -125,11 +125,9 @@ class BadgesController {
   String get label => inputIsNotEmpty ? "Arrr! Write yer name!" :
     "Aye! Gimme a name!";
 
-  generateName() {
-    return ns.randomName().then((_name) {
-      name = _name;
-    });
-  }
+  generateName() => ns.randomName().then((_name) {
+    name = _name;
+  });
 }
 ```
 You've added a `NamesService` instance as a field to the controller:
