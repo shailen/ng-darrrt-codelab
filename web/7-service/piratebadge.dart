@@ -47,13 +47,9 @@ class BadgesController {
     "Aye! Gimme a name!";
 
   generateName() {
-    return ns.randomAppellation()
-        .then((_appellation) => pn.appellation = _appellation)
-        .then((_) => ns.randomName())
-        .then((_name) {
-          pn.firstName = _name;
-          name = pn.firstName;
-        });
+    return ns.randomName().then((_name) {
+      name = _name;
+    });
   }
 }
 
