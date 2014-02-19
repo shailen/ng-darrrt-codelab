@@ -111,28 +111,34 @@ Key information:
 In `piratebadge.dart`:
  - Add an import for the component library:
 
-    ```Dart
-    import 'badge/badge_component.dart';
-    ```
+  <pre>
+  import 'package:angular/angular.dart';
+  <b>import 'badge/badge_component.dart';</b>
+  ...
+  </pre>
+
  - Add the component type to the module:
 
-    ```Dart
-    void main() {
-      ngBootstrap(module: new Module()
-        ..type(BadgesController)
-        ..type(BadgeComponent));
-    }
-    ```
+  <pre>
+  void main() {
+    ngBootstrap(module: new Module()
+      ..type(BadgesController)
+      <b>..type(BadgeComponent))</b>;
+  }
+  </pre>
 
-### Run the app.
+### Run the app in Dartium.
 
+The app should look exactly like it did before,
+but now the code is more modular.
+You could use the component in another app,
+or you could use multiple copies of the badge.
+ 
+**Bonus:** Try adding several badges to your page.
 
 ### Learn more
  - [Creating a Custom Component](https://angulardart.org/tutorial/05-ch03-component.html)
  - [Shadow DOM](http://www.w3.org/TR/shadow-dom/)
-
- 
-**Bonus:** Try adding several badges to your page.
 
 
 ### Problems?
