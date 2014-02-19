@@ -14,10 +14,10 @@ In Dart Editor, use **File > Open Existing Folder...** to open
 ### Open the app's source files.
 
 The initial app uses the following source files:
-* pubspec.yaml: The app's description and dependencies, used by the Dart package manager
-* piratebadge.css: The app's appearance (we'll skip this for now)
-* web/1-blankbadge/piratebadge.html: The app's template
-* web/1-blankbadge/piratebadge.dart: Custom app logic
+* `pubspec.yaml`: The app's description and dependencies, used by the Dart package manager
+* `piratebadge.css`: The app's appearance (we'll skip this for now)
+* `web/1-blankbadge/piratebadge.html`: The app's template
+* `web/1-blankbadge/piratebadge.dart`: Custom app logic
 
 In Dart Editor, open `pubspec.yaml` (in the top directory) by
 double-clicking its filename.
