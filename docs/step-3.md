@@ -4,31 +4,31 @@ In this step you add a button and a controller that coordinates the button, labe
 
 _**Keywords**: controller, module, click event_
 
-1. Open `piratebadge.dart`.
- - Create empty class `BadgesController` with a `name` field :
+### Edit piratebadge.dart.
 
-    ```Dart
-    class BadgesController {
+<b>&rarr; Create an empty class named `BadgesController`, and give it a `name` property.</b>
+
+<pre><b>class BadgesController {
+  String name = '';
+  BadgesController();
+}</b></pre>
     
-      String name = '';
+<b>&rarr; Add an `NgController` annotation to the class.</b>
 
-      BadgesController();
+<pre><b>@NgController(
+  selector: '[badges]',
+  publishAs: 'ctrl')</b>
+class BadgesController {   
+</pre>
 
-    }
-    ``` 
- - Add a `NgController` annotation top of this class :
+Key information:
+- The NgController annotation tells Angular that BadgesController is an Angular controller.
+- The required `selector` argument defines the CSS selector that triggers the controller.
+  It can be any valid CSS selector that does not cross element boundaries.
+- The `publishAs` argument specifies that the controller instance should be assigned to
+  the current scope under the specified name.
 
-    ```Dart
-    @NgController(
-       selector: '[badges]',
-       publishAs: 'ctrl')
-    class BadgesController {   
-    ````
-
- > This annotation tells Angular that the class `BadgesController` is an Angular Controller. 
- The required `selector` field defines the CSS selector that will trigger the Controller. It can be any valid CSS selector   which does not cross element boundaries.
- The `publishAs` field specifies that the Controller instance should be assigned to the current scope under the name specified
- - Modify `main` method to create a new module.
+<b>&rarr; Modify the `main()` method to create a new module.</b>
 
     ```Dart
     void main() {
@@ -48,7 +48,7 @@ _**Keywords**: controller, module, click event_
     }
     ```
 
-2. Open `piratebadge.html`. 
+### Open `piratebadge.html`. 
  - Add `badges` (the controller selector name) on the `<body>` element:
 
     ```HTML
@@ -89,7 +89,7 @@ _**Keywords**: controller, module, click event_
     
  > `ng-disabled`, like the `ng-click` directive, is a built-in AngularDart directive. It is used to enable or disable an element according to the value of a boolean expression. In our case we test that the controller's `name` property is not empty after we have trimmed it.
 
-3. Run `piratebadge.html` and click on button.
+### Run `piratebadge.html` and click on button.
 
 ### Problems?
 Check your code against the files in [3-buttonbadge](../web/3-buttonbadge).
