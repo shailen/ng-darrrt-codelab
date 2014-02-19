@@ -1,87 +1,114 @@
 ## Step 4: Create a custom component
-> **Goal**: As a developer I can use a `<badge>` tag to put a badge anywhere.
 
-_**Keywords**: component, ShadowDOM_
+In the step, you create a component
+that lets you use a `<badge>` tag anywhere in your app.
 
-1. Create a `badge` folder in your work directory that will host all our
-component files.
-2. Create a file `badge/badge_component.html` and move the HTML corresponding
-to the badge in this new file:
+_**Keywords**: component, Shadow DOM_
 
-    ```HTML
-    <div class="badge">
-      <div class="greeting">
-        Arrr! Me name is
-      </div>
-      <div class="name">
-        <span id="badgeName">{{cmp.name}}</span>
-      </div>
-    </div>
-    ```
+### Create a directory for the component.
 
-3. Create a file `badge/badge_component.css` that will contain the styles for
-the badge component:
+Name the directory `badge`,
+and put it under `web/1-blankbadge` (or wherever you've been working).
 
-    ```CSS
-    .badge {
-      border: 2px solid brown;
-      border-radius: 1em;
-      background: red;
-      font-size: 14pt;
-      width: 14em;
-      height: 7em;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-    .greeting {
-      color: white;
-      font-family: sans-serif;
-      padding: 0.5em;
-    }
-    .name {
-      color: black;
-      background: white;
-      font-family: "Marker Felt", cursive;
-      font-size: 25pt;
-      padding-top: 1.0em;
-      padding-bottom: 0.7em;
-      height: 16px;
-    }
-    ```
+The `badge` directory will contain all of the files for the new component.
 
-4. Create a file `badge/badge_component.dart`.
+### Create an HTML file for the component.
 
-    ```Dart
-    library badge;
+Under the `badge` directory,
+create a file named `badge_component.html`
+with the following contents:
 
-    import 'package:angular/angular.dart';
+```HTML
+<div class="badge">
+  <div class="greeting">
+    Arrr! Me name is
+  </div>
+  <div class="name">
+    <span id="badgeName">{{cmp.name}}</span>
+  </div>
+</div>
+```
 
-    @NgComponent(
-        selector: 'badge',
-        templateUrl: 'badge/badge_component.html',
-        cssUrl: 'badge/badge_component.css',
-        publishAs: 'cmp'
-    )
-    class BadgeComponent {
-      @NgAttr('name')
-      String name;
-    }
-    ```
- >#### `templateUrl` and `cssUrl`
- >Since Components are self contained, they need to know what HTML template and
- CSS to use for their view. Components do not use the HTML of your app. They
- have their own.
- >#### `map`
- >The `name` field of the class is marked with `@NgAttr`, which specifies that
- the field is to be mapped to DOM attribute.
-5. In `piratebadge.html` replace the HTML code of badge with the new `<badge>`:
+### Create a CSS file for the component.
 
-    ```HTML
-    <badge name="{{ctrl.name}}" style='float: left; margin-left: 20px;'></badge>
-    ```
+Under the `badge` directory,
+create a file named `badge_component.css`
+with the following contents:
 
-6. Register the new component. In `piratebadge.dart`:
+```CSS
+.badge {
+  border: 2px solid brown;
+  border-radius: 1em;
+  background: red;
+  font-size: 14pt;
+  width: 14em;
+  height: 7em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.greeting {
+  color: white;
+  font-family: sans-serif;
+  padding: 0.5em;
+}
+.name {
+  color: black;
+  background: white;
+  font-family: "Marker Felt", cursive;
+  font-size: 25pt;
+  padding-top: 1.0em;
+  padding-bottom: 0.7em;
+  height: 16px;
+}
+```
+
+### Create a Dart file for the component
+
+Under the `badge` directory,
+create a file named `badge_component.dart`
+with the following contents:
+
+```Dart
+library badge;
+
+import 'package:angular/angular.dart';
+
+@NgComponent(
+    selector: 'badge',
+    templateUrl: 'badge/badge_component.html',
+    cssUrl: 'badge/badge_component.css',
+    publishAs: 'cmp'
+)
+class BadgeComponent {
+  @NgAttr('name')
+  String name;
+}
+```
+
+Key information:
+
+* The NgComponent annotation tells Angular that BadgeComponent
+  is an Angular component.
+* The required `selector` argument defines the CSS selector
+  that specifies the component.
+  Setting it to just plain `badge` associates it with all `<badge>` tags.
+* The `templateUrl` and `cssUrl` arguments tell Angular
+  which HTML and CSS files to use for badges.
+* The NgAttr annotation on the `name` field
+  maps the field to a DOM attribute.
+
+### Use the <badge> element in the app
+
+<b>&rarr; In `piratebadge.html` replace the HTML code of badge with the new `<badge>`.</b>
+
+```HTML
+<badge name="{{ctrl.name}}" style='float: left; margin-left: 20px;'></badge>
+```
+
+### Register the new component.
+
+In `piratebadge.dart`:
  - Add an import for the component library:
 
     ```Dart
@@ -97,12 +124,12 @@ the badge component:
     }
     ```
 
-7. Run your application.
+### Run your application.
 
-**Bonus** : try to add several badges on your page.
+### Bonus: Try adding several badges to your page.
 
-### Learn more about
- - [Increasing code reuse through Components](https://github.com/angular/angular.dart.tutorial/wiki/Increasing-code-reuse-through-Components)
+### Learn more
+ - [Creating a Custom Component](https://angulardart.org/tutorial/05-ch03-component.html)
  - [Shadow DOM](http://www.w3.org/TR/shadow-dom/)
 
 ### Problems?
