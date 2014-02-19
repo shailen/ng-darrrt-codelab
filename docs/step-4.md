@@ -98,7 +98,7 @@ Key information:
 * The NgAttr annotation on the `name` field
   maps the field to a DOM attribute.
 
-### Use the <badge> element in the app
+### Use the <badge> element in the app.
 
 <b>&rarr; In `piratebadge.html` replace the HTML code of badge with the new `<badge>`.</b>
 
@@ -124,7 +124,7 @@ In `piratebadge.dart`:
     }
     ```
 
-### Run your application.
+### Run the app.
 
 ### Bonus: Try adding several badges to your page.
 
