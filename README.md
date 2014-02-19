@@ -22,7 +22,7 @@ This code lab has the following sections:
 * [Step 0: Set up](docs/step-0.md)
 * [Step 1: Run the app, and view its code](docs/step-1.md)
 * [Step 2: Add an input field](docs/step-2.md)
-* [Step 3: Add a button](docs/step-3.md)
+* [Step 3: Add a button and controller](docs/step-3.md)
 * [Step 4: Create a custom component](docs/step-4.md)
 * [Step 5: Use a class as a model](docs/step-5.md)
 * [Step 6: Read from a JSON-encoded file](docs/step-6.md)
