@@ -6,11 +6,6 @@ and run the app.
 _**Keywords**: main, pub, Dartium, Angular_
 
 
-### Open ng-darrrt-codelab-master in Dart Editor.
-
-In Dart Editor, use **File > Open Existing Folder...** to open
-`ng-darrt-codelab-master`.
-
 ### Open the app's source files.
 
 The initial app uses the following source files:
