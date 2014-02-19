@@ -1,5 +1,6 @@
-## Step 3: Add a button
-> **Goal**: As a user I want to put the name 'Anne Bonney' when I click on a generate button.
+## Step 3: Add a button and controller
+
+In this step you add a button and a controller that coordinates the button, label, and badge.
 
 _**Keywords**: controller, module, click event_
 
