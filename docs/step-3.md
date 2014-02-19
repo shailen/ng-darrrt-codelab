@@ -8,10 +8,15 @@ _**Keywords**: controller, module, click event_
 
 <b>&rarr; Create an empty class named `BadgesController`, and give it a `name` property.</b>
 
-<pre><b>class BadgesController {
+<pre>
+...
+<b>class BadgesController {
   String name = '';
   BadgesController();
-}</b></pre>
+}</b>
+
+void main() {
+...</pre>
     
 <b>&rarr; Add an `NgController` annotation to the class.</b>
 
@@ -117,7 +122,14 @@ Key information:
 
 * Like `ng-click`, `ng-disabled` is a built-in AngularDart directive.
 
-### Run `piratebadge.html` and click the button.
+### Run the app in Dartium.
+
+Click the button.
+"Anne Bonney" appears in the text field and badge,
+and the button becomes disabled.
+
+Erase all text from the input field.
+The button becomes enabled again.
 
 ### Problems?
 Check your code against the files in [3-buttonbadge](../web/3-buttonbadge).
