@@ -126,11 +126,14 @@ In `piratebadge.dart`:
 
 ### Run the app.
 
-### Bonus: Try adding several badges to your page.
 
 ### Learn more
  - [Creating a Custom Component](https://angulardart.org/tutorial/05-ch03-component.html)
  - [Shadow DOM](http://www.w3.org/TR/shadow-dom/)
+
+ 
+**Bonus:** Try adding several badges to your page.
+
 
 ### Problems?
 Check your code against the files in [4-extractcomponent](../web/4-extractcomponent).
