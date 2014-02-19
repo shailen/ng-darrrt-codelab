@@ -33,6 +33,7 @@ which creates a directory called `ng-darrrt-codelab-master`.
 
 In Dart Editor, use **File > Open Existing Folder...**
 to open the `ng-darrrt-codelab-master` directory.
+Then open the `web` directory.
 
 ![The codelab's directory structure: code for each completed step is under web/; a packages directory appears; pubspec.* define the app's dependencies.](img/fileview.png).
 
