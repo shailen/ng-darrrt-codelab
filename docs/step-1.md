@@ -1,7 +1,9 @@
 ## Step 1: Run the app, and view its code
 
-In this step, you open the app's source files, familiarize yourself with its code,
-and run the app.
+In this step, you open the source files for the first version of the
+app under `ng-darrrt-codelab-master`.
+After familiarizing yourself with the app's code,
+you run the app.
 
 _**Keywords**: main, pub, Dartium, Angular_
 
@@ -20,8 +22,7 @@ To see its raw source code,
 click the **Source** tab at the bottom of the edit view.
 
 Still in Dart Editor,
-expand the `web` directory and its subdirectory `1-blankbadge` by
-clicking the little arrows ► to the left of their names.
+expand the `1-blankbadge` directory (under `web`).
 Under `web/1-blankbadge`,
 double-click `piratebadge.html` and `piratebadge.dart`.
 
@@ -29,7 +30,7 @@ double-click `piratebadge.html` and `piratebadge.dart`.
 
 ### Review the code.
 
-Get familiar with `pubspec.yaml`, and with the HTML and the Dart code
+Get familiar with `pubspec.yaml`, and with the HTML and Dart code
 for the skeleton version of the app.
 
 #### pubspec.yaml
@@ -101,8 +102,6 @@ Key information:
   Here, it’s the `piratebadge.dart` file.
 - The `packages/browser/dart.js` script checks for native Dart support and
   either bootstraps the Dart VM or loads compiled JavaScript instead.
-- Dartium is a special build of the Chromium browser
-  that has a Dart VM, so it can run Dart apps natively.
 
 #### piratebadge.dart
 
