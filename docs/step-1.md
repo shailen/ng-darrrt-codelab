@@ -1,23 +1,20 @@
 ## Step 1: Run the app, and view its code
 
-In this step, you open the app's source files, familiarize yourself with its code,
-and run the app.
+In this step, you open the source files for the first version of the
+app under `ng-darrrt-codelab-master`.
+After familiarizing yourself with the app's code,
+you run the app.
 
 _**Keywords**: main, pub, Dartium, Angular_
 
 
-### Open ng-darrrt-codelab-master in Dart Editor.
-
-In Dart Editor, use **File > Open Existing Folder...** to open
-`ng-darrt-codelab-master`.
-
 ### Open the app's source files.
 
 The initial app uses the following source files:
-* pubspec.yaml: The app's description and dependencies, used by the Dart package manager
-* piratebadge.css: The app's appearance (we'll skip this for now)
-* web/1-blankbadge/piratebadge.html: The app's template
-* web/1-blankbadge/piratebadge.dart: Custom app logic
+* `pubspec.yaml`: The app's description and dependencies, used by the Dart package manager
+* `piratebadge.css`: The app's appearance (we'll skip this for now)
+* `web/1-blankbadge/piratebadge.html`: The app's template
+* `web/1-blankbadge/piratebadge.dart`: Custom app logic
 
 In Dart Editor, open `pubspec.yaml` (in the top directory) by
 double-clicking its filename.
@@ -25,8 +22,7 @@ To see its raw source code,
 click the **Source** tab at the bottom of the edit view.
 
 Still in Dart Editor,
-expand the `web` directory and its subdirectory `1-blankbadge` by
-clicking the little arrows ► to the left of their names.
+expand the `1-blankbadge` directory (under `web`).
 Under `web/1-blankbadge`,
 double-click `piratebadge.html` and `piratebadge.dart`.
 
@@ -34,7 +30,7 @@ double-click `piratebadge.html` and `piratebadge.dart`.
 
 ### Review the code.
 
-Get familiar with `pubspec.yaml`, and with the HTML and the Dart code
+Get familiar with `pubspec.yaml`, and with the HTML and Dart code
 for the skeleton version of the app.
 
 #### pubspec.yaml
@@ -46,11 +42,10 @@ the information they need to download the
 [angular package](https://pub.dartlang.org/packages/angular).
 
 ``` yaml
-name: ng-darrrt-codelab
+name: ng_darrrt_codelab
 description: A one hour exercise, based on the Darrrt project, to learn AngularDart.
 dependencies:
-    angular: 0.9.5
-    browser: any
+    angular: 0.9.6
     shadow_dom: any
 ```
 
@@ -106,8 +101,6 @@ Key information:
   Here, it’s the `piratebadge.dart` file.
 - The `packages/browser/dart.js` script checks for native Dart support and
   either bootstraps the Dart VM or loads compiled JavaScript instead.
-- Dartium is a special build of the Chromium browser
-  that has a Dart VM, so it can run Dart apps natively.
 
 #### piratebadge.dart
 

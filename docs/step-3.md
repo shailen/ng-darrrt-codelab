@@ -1,94 +1,135 @@
-## Step 3: Add a button
-> **Goal**: As a user I want to put the name 'Anne Bonney' when I click on a generate button.
+## Step 3: Add a button and controller
+
+In this step you add a button and a controller that coordinates the button, label, and badge.
 
 _**Keywords**: controller, module, click event_
 
-1. Open `piratebadge.dart`.
- - Create empty class `BadgesController` with a `name` field :
+### Edit piratebadge.dart.
 
-    ```Dart
-    class BadgesController {
+<b>&rarr; Create an empty class named `BadgesController`, and give it a `name` property.</b>
+
+<pre>
+...
+<b>class BadgesController {
+  String name = '';
+  BadgesController();
+}</b>
+
+void main() {
+...</pre>
     
-      String name = '';
+<b>&rarr; Add an `NgController` annotation to the class.</b>
 
-      BadgesController();
+<pre><b>@NgController(
+  selector: '[badges]',
+  publishAs: 'ctrl')</b>
+class BadgesController {   
+</pre>
 
-    }
-    ``` 
- - Add a `NgController` annotation top of this class :
+Key information:
+- The NgController annotation tells Angular that BadgesController is an Angular controller.
+- The required `selector` argument defines the CSS selector that triggers the controller.
+  It can be any valid CSS selector that does not cross element boundaries.
+- The `publishAs` argument specifies that the controller instance should be assigned to
+  the current scope under the specified name.
 
-    ```Dart
-    @NgController(
-       selector: '[badges]',
-       publishAs: 'ctrl')
-    class BadgesController {   
-    ````
+<b>&rarr; Modify the `main()` method to create a new module.</b>
 
- > This annotation tells Angular that the class `BadgesController` is an Angular Controller. 
- The required `selector` field defines the CSS selector that will trigger the Controller. It can be any valid CSS selector   which does not cross element boundaries.
- The `publishAs` field specifies that the Controller instance should be assigned to the current scope under the name specified
- - Modify `main` method to create a new module.
-
-    ```Dart
-    void main() {
-      ngBootstrap(module: new Module()..type(BadgesController));
-    }
-    ``` 
+<pre>
+void main() {
+  <b>ngBootstrap(module: new Module()..type(BadgesController));</b>
+}
+</pre>
     
- > Inside the ngBootstrap method, a new AngularModule is created. The AngularModule provides all of Angular’s built in services  and directives. Your app’s module is added to the list of modules that Angular loads.
- - In class `BadgesController`, add an `inputIsNotEmpty` getter, a `label` getter and a `generateName` method :
+Key information:
+- The Module instance provides all of Angular’s built in services  and directives.
+- Your app’s module is added to the list of modules that Angular loads.
 
-    ```Dart
-    bool get inputIsNotEmpty => !name.trim().isEmpty;
-  	String get label => inputIsNotEmpty ? "Arrr! Write yer name!" : "Aye! Gimme a name!";
-      
-    generateName() {
-      name = 'Anne Bonney';
-    }
-    ```
+<b>&rarr; In the `BadgesController` class, add an `inputIsNotEmpty` getter,
+a `label` getter, and a `generateName()` method.</b>
 
-2. Open `piratebadge.html`. 
- - Add `badges` (the controller selector name) on the `<body>` element:
-
-    ```HTML
-    <body badges>
-    ```
- - Add the `button` tag below the input field
-
-    ```HTML
-    <div class="widgets">
-      <div>
-        <input type="text" id="inputName" maxlength="15" ng-model="name">
-      </div>
-      <div>
-        <button ng-click="ctrl.generateName()">{{ctrl.label}}</button>
-      </div>
-    </div>
-    ```
-
- > `ng-click` is a built in Angular Directive that allows you to specify custom behavior when any element is clicked. In our example, it invokes the generateName() method on the controller.
- > `{{ctrl.label}}` show you that a mustache can refer to a getter.
- - Update data binding : replace `name` by `ctrl.name` to use name from controller.
-
-    ```HTML
-    <input type="text" id="inputName" maxlength="15" ng-model="ctrl.name">
-    ```
+<pre>
+class BadgesController {
+  String name = '';
+  BadgesController();
+  
+  <b>bool get inputIsNotEmpty => !name.trim().isEmpty;
+  String get label => inputIsNotEmpty ? "Arrr! Write yer name!" : "Aye! Gimme a name!";
     
-    ```HTML
-    <span id="badgeName">{{ctrl.name}}</span>
-    ```
-    
- - Add a `ng-disabled` directive on the button tag who disable it when the input field will be not empty.
- 
- 	```HTML
-    <button ng-click="ctrl.generateName()" ng-disabled="ctrl.inputIsNotEmpty">
-    	{{ctrl.label}}
-    </button>
-    ```
-    
- > `ng-disabled`, like the `ng-click` directive, is a built-in AngularDart directive. It is used to enable or disable an element according to the value of a boolean expression. In our case we test that the controller's `name` property is not empty after we have trimmed it.
+  generateName() {
+    name = 'Anne Bonney';
+  }</b>
+}
+</pre>
 
-3. Run `piratebadge.html` and click on button.
+<!-- PENDING: add key info about getters -->
+
+### Edit piratebadge.html. 
+
+<b>&rarr; Add `badges` to the `<body>` element. </b>
+
+<pre>
+&lt;body <b>badges</b>>
+</pre>
+
+Key information:
+
+* Thanks to the `badges` selector, a BadgeController now
+  controls every element under `<body>`.
+
+<b>&rarr; Add a `button` element under the input field.</b>
+
+<pre>
+&lt;div class="widgets">
+  &lt;div>
+    &lt;input type="text" id="inputName" maxlength="15" ng-model="name">
+  &lt;/div>
+  <b>&lt;div>
+    &lt;button ng-click="ctrl.generateName()">{{ctrl.label}}&lt;/button>
+  &lt;/div></b>
+&lt;/div>
+</pre>
+
+Key information:
+
+* `ng-click` is a built-in Angular directive that
+  allows you to specify custom behavior when an element is clicked.
+  In our example, it invokes the generateName() method on the controller.
+* As `{{ctrl.label}}` shows, an Angular expression can refer to a getter.
+
+<b>&rarr; Update data binding: replace `name` with `ctrl.name`.</b>
+
+<pre>
+&lt;input type="text" id="inputName" maxlength="15" ng-model="<b>ctrl.name</b>">
+</pre>
+
+<pre>
+&lt;span id="badgeName">{{<b>ctrl.name</b>}}</span>
+</pre>
+    
+<b>&rarr; Add a `ng-disabled` directive to the button tag. </b>
+
+<pre>
+&lt;button ng-click="ctrl.generateName()" <b>ng-disabled="ctrl.inputIsNotEmpty"</b>>
+  {{ctrl.label}}
+&lt;/button>
+</pre>
+
+Key information:
+* `ng-disabled` disables the element whenever the condition is true.
+  In this case,
+  the button is disabled whenever the input field contains text.
+
+* Like `ng-click`, `ng-disabled` is a built-in AngularDart directive.
+
+### Run the app in Dartium.
+
+Click the button.
+"Anne Bonney" appears in the text field and badge,
+and the button becomes disabled.
+
+Erase all text from the input field.
+The button becomes enabled again.
 
 ### Problems?
 Check your code against the files in [3-buttonbadge](../web/3-buttonbadge).
