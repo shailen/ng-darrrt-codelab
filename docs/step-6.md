@@ -7,7 +7,7 @@ _**Keywords**: HTTP Request, Dependency Injection_
 
 ### Create piratenames.json
 
-In the same directory as `piratenames.dart`, create a JSON-encoded file named
+In the same directory as `piratebadge.dart`, create a JSON-encoded file named
 `piratenames.json` with the following content:
 
 ```JSON
