@@ -42,11 +42,10 @@ the information they need to download the
 [angular package](https://pub.dartlang.org/packages/angular).
 
 ``` yaml
-name: ng-darrrt-codelab
+name: ng_darrrt_codelab
 description: A one hour exercise, based on the Darrrt project, to learn AngularDart.
 dependencies:
-    angular: 0.9.5
-    browser: any
+    angular: 0.9.6
     shadow_dom: any
 ```
 
