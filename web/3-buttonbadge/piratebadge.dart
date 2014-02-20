@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+library piratebadge;
+
 import 'package:angular/angular.dart';
 
 @MirrorsUsed(override:'*')
@@ -11,12 +13,11 @@ import 'dart:mirrors';
     selector: '[badges]',
     publishAs: 'ctrl')
 class BadgesController {
-
   String name = '';
 
   BadgesController();
 
-  bool get inputIsNotEmpty => !name.trim().isEmpty;
+  bool get inputIsNotEmpty => name.trim().isNotEmpty;
   String get label => inputIsNotEmpty ? "Arrr! Write yer name!" : "Aye! Gimme a name!";
 
   generateName() {
@@ -24,6 +25,12 @@ class BadgesController {
   }
 }
 
+class PirateModule extends Module {
+  PirateModule() {
+    type(BadgesController);
+  }
+}
+
 void main() {
-  ngBootstrap(module: new Module()..type(BadgesController));
+  ngBootstrap(module: new PirateModule());
 }

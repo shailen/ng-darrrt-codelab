@@ -23,8 +23,13 @@ class BadgesController {
   }
 }
 
+class PirateModule extends Module {
+  PirateModule() {
+    type(BadgesController);
+    type(BadgeComponent);
+  }
+}
+
 void main() {
-  ngBootstrap(module: new Module()
-    ..type(BadgesController)
-    ..type(BadgeComponent));
+  ngBootstrap(module: new PirateModule());
 }

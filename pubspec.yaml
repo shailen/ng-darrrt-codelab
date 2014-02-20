@@ -3,3 +3,6 @@ description: A one hour exercise, based on the Darrrt project, to learn AngularD
 dependencies:
   angular: 0.9.6
   shadow_dom: any
+  browser: any
+  unittest: any
+  js: any
